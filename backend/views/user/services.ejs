@@ -110,175 +110,203 @@
 
     <!-- Our Services Section Start -->
 <div class="page-services bg-section">
+
     <div class="container">
+
         <div class="row">
 
-            <!-- Service Item 1 Start -->
-            <div class="col-lg-3 col-md-6">
-                <div class="service-item wow fadeInUp">
+            <% if (services && services.length > 0) { %>
 
-                    <!-- Service Image Start -->
-                    <div class="service-image">
-                        <a href="ac-service.html" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="images/service-image-1.jpg"
-                                     alt="AC Service and Maintenance">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Service Image End -->
+                <% services.forEach((service, index) => { %>
 
-                    <!-- Service Body Start -->
-                    <div class="service-body">
-                        <div class="service-content">
-                            <h3>
-                                <a href="ac-service.html">
-                                    AC Service & Maintenance
+                    <!-- Service Item Start -->
+                    <div class="col-lg-3 col-md-6">
+
+                        <div
+                            class="service-item wow fadeInUp"
+                            data-wow-delay="<%= (index % 4) * 0.2 %>s"
+                        >
+
+                            <!-- Service Image Start -->
+                            <div class="service-image">
+
+                                <a
+                                    href="/services/<%= service.slug %>"
+                                    data-cursor-text="View"
+                                >
+
+                                    <figure class="image-anime">
+
+                                        <%
+                                            let serviceImage = "/images/default-service.jpg";
+
+                                            if (
+                                                service.images &&
+                                                service.images.length > 0 &&
+                                                service.images[0]
+                                            ) {
+                                                serviceImage = service.images[0];
+
+                                                if (!serviceImage.startsWith("/")) {
+                                                    serviceImage = "/uploads/" + serviceImage;
+                                                }
+                                            }
+                                        %>
+
+                                        <img
+                                            src="<%= serviceImage %>"
+                                            alt="<%= service.title %>"
+                                        >
+
+                                    </figure>
+
                                 </a>
-                            </h3>
+
+                            </div>
+                            <!-- Service Image End -->
+
+
+                            <!-- Service Body Start -->
+                            <div class="service-body">
+
+                                <div class="service-content">
+
+                                    <h3>
+                                        <a href="/services/<%= service.slug %>">
+                                            <%= service.title %>
+                                        </a>
+                                    </h3>
+
+                                </div>
+
+
+                                <div class="service-btn">
+
+                                    <a
+                                        href="/services/<%= service.slug %>"
+                                        class="readmore-btn"
+                                    >
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
+
+                                </div>
+
+                            </div>
+                            <!-- Service Body End -->
+
                         </div>
 
-                        <div class="service-btn">
-                            <a href="ac-service.html" class="readmore-btn">
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
                     </div>
-                    <!-- Service Body End -->
+                    <!-- Service Item End -->
+
+                <% }) %>
+
+            <% } else { %>
+
+                <!-- No Services -->
+                <div class="col-lg-12">
+
+                    <div class="text-center">
+
+                        <h3>No services available</h3>
+
+                    </div>
 
                 </div>
-            </div>
-            <!-- Service Item 1 End -->
 
-
-            <!-- Service Item 2 Start -->
-            <div class="col-lg-3 col-md-6">
-                <div class="service-item wow fadeInUp" data-wow-delay="0.2s">
-
-                    <!-- Service Image Start -->
-                    <div class="service-image">
-                        <a href="ac-repair.html" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="images/service-image-2.jpg"
-                                     alt="AC Repair Services">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Service Image End -->
-
-                    <!-- Service Body Start -->
-                    <div class="service-body">
-                        <div class="service-content">
-                            <h3>
-                                <a href="ac-repair.html">
-                                    AC Repair Services
-                                </a>
-                            </h3>
-                        </div>
-
-                        <div class="service-btn">
-                            <a href="ac-repair.html" class="readmore-btn">
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Service Body End -->
-
-                </div>
-            </div>
-            <!-- Service Item 2 End -->
-
-
-            <!-- Service Item 3 Start -->
-            <div class="col-lg-3 col-md-6">
-                <div class="service-item wow fadeInUp" data-wow-delay="0.4s">
-
-                    <!-- Service Image Start -->
-                    <div class="service-image">
-                        <a href="washing-machine-service.html" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="images/service-image-3.jpg"
-                                     alt="Washing Machine Service">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Service Image End -->
-
-                    <!-- Service Body Start -->
-                    <div class="service-body">
-                        <div class="service-content">
-                            <h3>
-                                <a href="washing-machine-service.html">
-                                    Washing Machine Service
-                                </a>
-                            </h3>
-                        </div>
-
-                        <div class="service-btn">
-                            <a href="washing-machine-service.html" class="readmore-btn">
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Service Body End -->
-
-                </div>
-            </div>
-            <!-- Service Item 3 End -->
-
-
-            <!-- Service Item 4 Start -->
-            <div class="col-lg-3 col-md-6">
-                <div class="service-item wow fadeInUp" data-wow-delay="0.6s">
-
-                    <!-- Service Image Start -->
-                    <div class="service-image">
-                        <a href="washing-machine-repair.html" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="images/service-image-4.jpg"
-                                     alt="Washing Machine Repair">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Service Image End -->
-
-                    <!-- Service Body Start -->
-                    <div class="service-body">
-                        <div class="service-content">
-                            <h3>
-                                <a href="washing-machine-repair.html">
-                                    Washing Machine Repair
-                                </a>
-                            </h3>
-                        </div>
-
-                        <div class="service-btn">
-                            <a href="washing-machine-repair.html" class="readmore-btn">
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Service Body End -->
-
-                </div>
-            </div>
-            <!-- Service Item 4 End -->
+            <% } %>
 
         </div>
-           <div class="col-lg-12">
-                    <!-- Page Pagination Start -->
-                    <div class="page-pagination wow fadeInUp" data-wow-delay="1.2s">
+
+
+        <!-- Pagination Start -->
+
+        <% if (totalPages > 1) { %>
+
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <div
+                        class="page-pagination wow fadeInUp"
+                        data-wow-delay="0.8s"
+                    >
+
                         <ul class="pagination">
-                            <li><a href="#"><i class="fa-solid fa-angle-left"></i></a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#"><i class="fa-solid fa-angle-right"></i></a></li>
+
+
+                            <!-- Previous Button -->
+
+                            <% if (currentPage > 1) { %>
+
+                                <li>
+                                    <a href="/services?page=<%= currentPage - 1 %>">
+                                        <i class="fa-solid fa-angle-left"></i>
+                                    </a>
+                                </li>
+
+                            <% } else { %>
+
+                                <li class="disabled">
+                                    <a href="javascript:void(0);">
+                                        <i class="fa-solid fa-angle-left"></i>
+                                    </a>
+                                </li>
+
+                            <% } %>
+
+
+                            <!-- Page Numbers -->
+
+                            <% for (let i = 1; i <= totalPages; i++) { %>
+
+                                <li class="<%= currentPage === i ? 'active' : '' %>">
+
+                                    <a href="/services?page=<%= i %>">
+                                        <%= i %>
+                                    </a>
+
+                                </li>
+
+                            <% } %>
+
+
+                            <!-- Next Button -->
+
+                            <% if (currentPage < totalPages) { %>
+
+                                <li>
+                                    <a href="/services?page=<%= currentPage + 1 %>">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </a>
+                                </li>
+
+                            <% } else { %>
+
+                                <li class="disabled">
+                                    <a href="javascript:void(0);">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </a>
+                                </li>
+
+                            <% } %>
+
+
                         </ul>
+
                     </div>
-                    <!-- Page Pagination End -->
+
                 </div>
+
+            </div>
+
+        <% } %>
+
+        <!-- Pagination End -->
+
+
     </div>
+
 </div>
     <!-- Our Services Section End -->
 
