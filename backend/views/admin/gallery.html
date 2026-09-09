@@ -1,0 +1,228 @@
+<main class="main-content">
+
+    <header class="top-header">
+        <div class="header-left">
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <div class="header-search">
+                <i class="bi bi-search"></i>
+                <input
+                    type="text"
+                    placeholder="Search gallery..."
+                    id="gallerySearch"
+                >
+            </div>
+        </div>
+
+        <div class="header-user">
+            <div class="header-user-info">
+                <strong>Metro Cool</strong>
+                <span>Admin</span>
+            </div>
+
+            <div class="header-user-avatar">
+                <img src="assets/images/user.jpg" alt="Admin">
+            </div>
+        </div>
+    </header>
+
+
+    <div class="dashboard-content">
+
+        <!-- Page Header -->
+        <div class="page-header">
+
+            <div>
+                <h1>Gallery</h1>
+                <p>Manage your website gallery images</p>
+            </div>
+
+            <a
+                href="gallery-form.html"
+                class="add-gallery-btn"
+            >
+                <i class="bi bi-plus-lg"></i>
+                <span>Add New Image</span>
+            </a>
+
+        </div>
+
+
+        <!-- Filters -->
+        <div class="gallery-toolbar">
+
+            <div class="gallery-filter">
+                <label for="galleryCategory">Category</label>
+
+                <select id="galleryCategory">
+                    <option value="all">All Categories</option>
+                    <option value="projects">Projects</option>
+                    <option value="events">Events</option>
+                    <option value="products">Products</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+
+            <div class="gallery-count">
+                <strong>24</strong>
+                <span>Images</span>
+            </div>
+
+        </div>
+
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+
+            <!-- Gallery Item -->
+            <div class="gallery-card">
+
+                <div class="gallery-image">
+                    <img
+                        src="assets/images/gallery/gallery-1.jpg"
+                        alt="Gallery Image"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <a
+                            href="gallery-form.html?id=1"
+                            class="gallery-action edit"
+                            title="Edit"
+                        >
+                            <i class="bi bi-pencil"></i>
+                        </a>
+
+                        <button
+                            type="button"
+                            class="gallery-action delete"
+                            title="Delete"
+                        >
+                            <i class="bi bi-trash"></i>
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="gallery-info">
+                    <h3>Modern Kitchen</h3>
+                    <span>Projects</span>
+                </div>
+
+            </div>
+
+
+            <!-- Gallery Item -->
+            <div class="gallery-card">
+
+                <div class="gallery-image">
+                    <img
+                        src="assets/images/gallery/gallery-2.jpg"
+                        alt="Gallery Image"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <a
+                            href="gallery-form.html?id=2"
+                            class="gallery-action edit"
+                        >
+                            <i class="bi bi-pencil"></i>
+                        </a>
+
+                        <button
+                            type="button"
+                            class="gallery-action delete"
+                        >
+                            <i class="bi bi-trash"></i>
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="gallery-info">
+                    <h3>Living Room</h3>
+                    <span>Projects</span>
+                </div>
+
+            </div>
+
+
+            <!-- Gallery Item -->
+            <div class="gallery-card">
+
+                <div class="gallery-image">
+                    <img
+                        src="assets/images/gallery/gallery-3.jpg"
+                        alt="Gallery Image"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <a
+                            href="gallery-form.html?id=3"
+                            class="gallery-action edit"
+                        >
+                            <i class="bi bi-pencil"></i>
+                        </a>
+
+                        <button
+                            type="button"
+                            class="gallery-action delete"
+                        >
+                            <i class="bi bi-trash"></i>
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="gallery-info">
+                    <h3>Bedroom Design</h3>
+                    <span>Products</span>
+                </div>
+
+            </div>
+
+
+            <!-- Gallery Item -->
+            <div class="gallery-card">
+
+                <div class="gallery-image">
+                    <img
+                        src="assets/images/gallery/gallery-4.jpg"
+                        alt="Gallery Image"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <a
+                            href="gallery-form.html?id=4"
+                            class="gallery-action edit"
+                        >
+                            <i class="bi bi-pencil"></i>
+                        </a>
+
+                        <button
+                            type="button"
+                            class="gallery-action delete"
+                        >
+                            <i class="bi bi-trash"></i>
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="gallery-info">
+                    <h3>Office Interior</h3>
+                    <span>Projects</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>

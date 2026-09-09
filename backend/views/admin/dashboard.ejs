@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Metro Cool - Admin Dashboard</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/admin-css/admin.css" />
+  </head>
+
+  <body>
+    <div class="admin-layout">
+      <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-inner">
+          <!-- Logo -->
+          <div class="brand">
+            <div class="brand-icon">
+              <i class="bi bi-flower1"></i>
+            </div>
+
+            <div class="brand-content">
+              <h1>Metro Cool</h1>
+              <span>Service Listing</span>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <nav class="sidebar-nav">
+            <a href="/admin/dashboard" class="nav-item active">
+              <i class="bi bi-house-fill"></i>
+              <span>Dashboard</span>
+            </a>
+
+            <a href="/admin/services" class="nav-item">
+              <i class="bi bi-grid-3x3-gap"></i>
+              <span>Services</span>
+            </a>
+
+            <a href="banners.html" class="nav-item">
+              <i class="bi bi-image"></i>
+              <span>Banners</span>
+            </a>
+
+            <a href="blogs.html" class="nav-item">
+              <i class="bi bi-file-earmark-text"></i>
+              <span>Blogs</span>
+            </a>
+
+            <a href="testimonials.html" class="nav-item">
+              <i class="bi bi-chat-square-text"></i>
+              <span>Testimonials</span>
+            </a>
+
+            
+          </nav>
+
+          <!-- Bottom Section -->
+          <div class="sidebar-bottom">
+            <a href="#" class="logout-link">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Logout</span>
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Sidebar overlay for mobile -->
+      <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+      <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+      <main class="main-content">
+        <!-- =====================================
+             TOP HEADER
+        ====================================== -->
+        <header class="top-header">
+          <div class="header-left">
+            <!-- Search -->
+            <div class="header-search">
+              <input type="text" placeholder="Search anything..." />
+
+              <button type="button">
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="header-right">
+            <!-- User -->
+            <div class="header-user">
+              <div class="header-user-info">
+                <strong>Metro Cool</strong>
+                <span>Admin</span>
+              </div>
+
+              <div class="header-user-avatar">
+                <img src="assets/images/user.jpg" alt="Admin" />
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- =====================================
+             PAGE CONTENT
+        ====================================== -->
+        <div class="dashboard-content">
+          <!-- Page Heading -->
+          <div class="page-heading">
+            <div>
+              <h2>
+                Welcome back, Admin
+                <span class="wave">👋</span>
+              </h2>
+
+              <p>Here's an overview of your platform.</p>
+            </div>
+          </div>
+
+          <!-- =====================================
+                 STAT CARDS
+            ====================================== -->
+          <section class="stats-section">
+            <div class="row g-3 mb-4">
+              <!-- Services -->
+              <div class="col-12 col-sm-6 col-xl-3">
+                <div class="stat-card">
+                  <div class="stat-icon services-icon">
+                    <i class="bi bi-grid-3x3-gap"></i>
+                  </div>
+
+                  <div class="stat-content">
+                    <span class="stat-label"> Total Services </span>
+
+                    <strong class="stat-number"> 256 </strong>
+
+                    <span class="stat-growth"> +18 this week </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Blogs -->
+              <div class="col-12 col-sm-6 col-xl-3">
+                <div class="stat-card">
+                  <div class="stat-icon blogs-icon">
+                    <i class="bi bi-chat-left-text"></i>
+                  </div>
+
+                  <div class="stat-content">
+                    <span class="stat-label"> Total Blogs </span>
+
+                    <strong class="stat-number"> 72 </strong>
+
+                    <span class="stat-growth"> +12 this week </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Testimonials -->
+              <div class="col-12 col-sm-6 col-xl-3">
+                <div class="stat-card">
+                  <div class="stat-icon testimonial-icon">
+                    <i class="bi bi-star"></i>
+                  </div>
+
+                  <div class="stat-content">
+                    <span class="stat-label"> Total Testimonials </span>
+
+                    <strong class="stat-number"> 48 </strong>
+
+                    <span class="stat-growth"> +10 this week </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Banners -->
+              <div class="col-12 col-sm-6 col-xl-3">
+                <div class="stat-card">
+                  <div class="stat-icon banners-icon">
+                    <i class="bi bi-grid"></i>
+                  </div>
+
+                  <div class="stat-content">
+                    <span class="stat-label"> Total Banners </span>
+
+                    <strong class="stat-number"> 16 </strong>
+
+                    <span class="stat-growth"> +6 this week </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- =====================================
+                 LOWER CONTENT
+            ====================================== -->
+          <section class="lower-section">
+            <div class="row g-3">
+              <!-- Recent Services -->
+              <div class="col-12 col-xl-8">
+                <div class="dashboard-card recent-services-card">
+                  <div class="card-header-custom">
+                    <h3>Recent Services</h3>
+
+                    <button class="view-all-btn">View all</button>
+                  </div>
+
+                  <!-- Services -->
+                  <div class="services-grid">
+                    <!-- Service -->
+                    <div class="service-item">
+                      <div class="service-image">
+                        <img
+                          src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=500&q=80"
+                          alt="Home Cleaning"
+                        />
+
+                        <span class="service-category"> Cleaning </span>
+                      </div>
+
+                      <div class="service-body">
+                        <h4>Home Cleaning</h4>
+
+                        <span class="service-status published">
+                          <i class="bi bi-circle-fill"></i>
+                          Published
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- Service -->
+                    <div class="service-item">
+                      <div class="service-image">
+                        <img
+                          src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=500&q=80"
+                          alt="Plumbing Repair"
+                        />
+
+                        <span class="service-category"> Plumbing </span>
+                      </div>
+
+                      <div class="service-body">
+                        <h4>Plumbing Repair</h4>
+
+                        <span class="service-status published">
+                          <i class="bi bi-circle-fill"></i>
+                          Published
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- Service -->
+                    <div class="service-item">
+                      <div class="service-image">
+                        <img
+                          src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=500&q=80"
+                          alt="Electrical Service"
+                        />
+
+                        <span class="service-category"> Installation </span>
+                      </div>
+
+                      <div class="service-body">
+                        <h4>Electrical Service</h4>
+
+                        <span class="service-status published">
+                          <i class="bi bi-circle-fill"></i>
+                          Published
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- Service -->
+                    <div class="service-item">
+                      <div class="service-image">
+                        <img
+                          src="https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=500&q=80"
+                          alt="Pest Control"
+                        />
+
+                        <span class="service-category"> Pest Control </span>
+                      </div>
+
+                      <div class="service-body">
+                        <h4>Pest Control</h4>
+
+                        <span class="service-status draft">
+                          <i class="bi bi-circle-fill"></i>
+                          Draft
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- =================================
+                         QUICK ACTIONS
+                    ================================== -->
+              <div class="col-12 col-xl-4">
+                <div class="dashboard-card quick-actions-card">
+                  <div class="card-header-custom">
+                    <h3>Quick Actions</h3>
+                  </div>
+
+                  <div class="quick-actions">
+                    <button class="quick-action">
+                      <span class="quick-action-icon">
+                        <i class="bi bi-file-earmark-plus"></i>
+                      </span>
+
+                      <span> Add New Service </span>
+
+                      <i class="bi bi-chevron-right action-arrow"></i>
+                    </button>
+
+                    <button class="quick-action">
+                      <span class="quick-action-icon">
+                        <i class="bi bi-image"></i>
+                      </span>
+
+                      <span> Add New Banner </span>
+
+                      <i class="bi bi-chevron-right action-arrow"></i>
+                    </button>
+
+                    <button class="quick-action">
+                      <span class="quick-action-icon">
+                        <i class="bi bi-file-earmark-text"></i>
+                      </span>
+
+                      <span> Create New Blog </span>
+
+                      <i class="bi bi-chevron-right action-arrow"></i>
+                    </button>
+
+                    <button class="quick-action">
+                      <span class="quick-action-icon">
+                        <i class="bi bi-chat-square-text"></i>
+                      </span>
+
+                      <span> Add Testimonial </span>
+
+                      <i class="bi bi-chevron-right action-arrow"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/main.js"></script>
+  </body>
+</html>

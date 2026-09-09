@@ -23,23 +23,23 @@ app.use(express.static("public"));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 
-app.use(async (req, res, next) => {
-  try {
-    const headerProducts = await Product.find({ isActive: true })
-      .select("name slug")
-      .sort({ createdAt: -1 }) // or featured first
-      .limit(8)
-      .lean();
+// app.use(async (req, res, next) => {
+//   try {
+//     const headerProducts = await Product.find({ isActive: true })
+//       .select("name slug")
+//       .sort({ createdAt: -1 }) // or featured first
+//       .limit(8)
+//       .lean();
 
-    res.locals.headerProducts = headerProducts;
+//     res.locals.headerProducts = headerProducts;
 
-    next();
-  } catch (err) {
-    console.error(err);
-    res.locals.headerProducts = [];
-    next();
-  }
-});
+//     next();
+//   } catch (err) {
+//     console.error(err);
+//     res.locals.headerProducts = [];
+//     next();
+//   }
+// });
 
 app.use((req, res, next) => {
   res.locals.currentUrl = req.path;
@@ -67,21 +67,21 @@ app.use(async (req, res, next) => {
 const userRoutes = require("./routes/userRoutes");
 app.use("/", userRoutes);
 
-// const adminRoutes = require("./routes/adminRoutes");
-// app.use("/admin", adminRoutes);
+const adminRoutes = require("./routes/adminRoutes");
+app.use("/admin", adminRoutes);
 
-// const apiRoutes = require("./routes/apiRoutes");
+const apiRoutes = require("./routes/apiRoutes");
 // const Product = require("./models/Product");
-// app.use("/api", apiRoutes);
+app.use("/api", apiRoutes);
 
-app.use((req, res, next) => {
-  res.status(404);
+// app.use((req, res, next) => {
+//   res.status(404);
 
-  if (req.originalUrl.startsWith("/api")) {
-    return res.json({ success: false, message: "Route not found" });
-  }
-  return res.render("404", { message: "Page Not Found" });
-});
+//   if (req.originalUrl.startsWith("/api")) {
+//     return res.json({ success: false, message: "Route not found" });
+//   }
+//   return res.render("404", { message: "Page Not Found" });
+// });
 
 // Error handler
 app.use((err, req, res, next) => {
@@ -96,7 +96,7 @@ app.use((err, req, res, next) => {
     });
   }
 
-  res.status(statusCode).render("error", {
+  res.status(statusCode).render("user/error", {
     message: err.message || "Something went wrong",
   });
 });
