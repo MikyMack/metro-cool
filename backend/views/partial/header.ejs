@@ -1,0 +1,55 @@
+<header class="main-header bg-section">
+		<div class="header-sticky">
+			<nav class="navbar navbar-expand-lg">
+				<div class="container">
+					<!-- Logo Start -->
+					<a class="navbar-brand" href="/">
+						<img src="images/logo.svg" alt="Logo">
+					</a>
+					<!-- Logo End -->
+
+					<!-- Main Menu Start -->
+					<div class="collapse navbar-collapse main-menu">
+                        <div class="nav-menu-wrapper">
+                            <ul class="navbar-nav mr-auto" id="menu">
+                                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/about">Our Story</a></li>
+                                <li class="nav-item submenu service-submenu">
+                                    <a class="nav-link" href="/services">Services</a>
+                                    <% if (Array.isArray(headerServices) && headerServices.length) { %>
+                                        <ul class="service-mega-dropdown">
+                                            <% headerServices.forEach((service) => { %>
+                                                <li class="service-dropdown-item-wrap">
+                                                    <a class="service-dropdown-item" href="/services/<%= service.slug %>">
+                                                        <span class="service-dropdown-item-image">
+                                                            <img src="<%= service.images && service.images[0] ? service.images[0] : 'images/logo.svg' %>" alt="<%= service.title %>">
+                                                        </span>
+                                                        <span class="service-dropdown-item-content">
+                                                            <span class="service-dropdown-item-title"><%= service.title %></span>
+
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            <% }) %>
+                                        </ul>
+                                    <% } %>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="/blog">Insights</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Header Btn Start -->
+                        <div class="header-btn">
+                            <a href="/contact" class="btn-default btn-highlighted">Get In Touch</a>
+                        </div>
+                        <!-- Header Btn End -->
+					</div>
+					<!-- Main Menu End -->
+					<div class="navbar-toggle"></div>
+				</div>
+			</nav>
+			<div class="responsive-menu"></div>
+		</div>
+	</header>
