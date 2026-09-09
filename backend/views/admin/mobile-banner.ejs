@@ -21,7 +21,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/admin-css/admin.css" />
 
-    <!-- font awesome -->
+    <!-- font-awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -54,7 +54,7 @@
               <span>Dashboard</span>
             </a>
 
-            <a href="/admin/services" class="nav-item active">
+            <a href="/admin/services" class="nav-item">
               <i class="bi bi-grid-3x3-gap"></i>
               <span>Services</span>
             </a>
@@ -64,7 +64,7 @@
               <span>Main Banners</span>
             </a>
 
-            <a href="/admin/mobile-banners" class="nav-item">
+            <a href="/admin/mobile-banners" class="nav-item active">
               <i class="bi bi-image"></i>
               <span>Mobile Banners</span>
             </a>
@@ -128,125 +128,75 @@
         </header>
 
         <!-- =========================================
-         SERVICES CONTENT
+         BANNERS CONTENT
     ========================================== -->
 
-        <div class="dashboard-content services-page">
+        <div class="dashboard-content banners-page">
           <!-- =====================================
-             PAGE TOP
+             PAGE HEADER
         ====================================== -->
 
-          <div class="services-page-header">
+          <div class="banners-page-header">
             <div class="page-title-wrapper">
-              <h2>Services</h2>
+              <h2>Mobile Banners</h2>
 
               <div class="breadcrumb-custom">
                 <a href="index.html"> Dashboard </a>
 
                 <i class="bi bi-chevron-right"></i>
 
-                <span>Services</span>
+                <span>Mobile Banners</span>
               </div>
             </div>
 
-            <!-- Add Service -->
-            <a href="/admin/service-form" class="add-service-btn">
+            <!-- Add Banner -->
+
+            <a href="/admin/mobile-banner-form" class="add-banner-btn">
               <i class="bi bi-plus-lg"></i>
 
-              <span>Add New Service</span>
+              <span>Add New Banner</span>
             </a>
           </div>
 
           <!-- =====================================
-             FILTER BAR
+             FILTER
         ====================================== -->
 
-          <div class="services-toolbar">
-            <div class="services-filters">
-              <!-- Search -->
-              <div class="service-search">
-                <i class="bi bi-search"></i>
+          <div class="banners-toolbar">
+            <div class="banner-filter">
+              <select id="bannerStatusFilter">
+                <option value="">All Status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
 
-                <input
-                  type="text"
-                  id="serviceSearch"
-                  placeholder="Search services..."
-                />
-              </div>
-
-              <!-- Category -->
-              <div class="filter-select">
-                <select id="categoryFilter">
-                  <option value="">All Categories</option>
-
-                  <option value="AC">AC</option>
-
-                  <option value="Refrigeration">Refrigeration</option>
-
-                  <option value="Washing Machine">Washing Machine</option>
-
-                  
-                </select>
-
-                <i class="bi bi-chevron-down"></i>
-              </div>
-
-              <!-- Status -->
-              <div class="filter-select">
-                <select id="statusFilter">
-                  <option value="">All Status</option>
-
-                  <option value="published">Published</option>
-
-                  <option value="draft">Draft</option>
-                </select>
-
-                <i class="bi bi-chevron-down"></i>
-              </div>
+              <i class="bi bi-chevron-down"></i>
             </div>
           </div>
 
           <!-- =====================================
-             SERVICES GRID
+             BANNERS GRID
         ====================================== -->
 
-          <div class="services-list row g-3" id="servicesList"></div>
+          <div class="row g-3 banners-grid" id="bannersGrid"></div>
 
           <!-- =====================================
-             NO RESULTS
+             EMPTY STATE
         ====================================== -->
 
-          <div class="services-empty mt-5" id="servicesEmpty">
-            <i class="bi bi-search"></i>
+          <div class="banners-empty" id="bannersEmpty">
+            <i class="bi bi-images"></i>
 
-            <h4>No services found</h4>
+            <h4>No banners found</h4>
 
-            <p>Try changing your search or filters.</p>
+            <p>No banners match the selected status.</p>
           </div>
 
           <!-- =====================================
              PAGINATION
         ====================================== -->
 
-          <div class="services-pagination">
-            <button type="button" class="pagination-btn disabled">
-              <i class="bi bi-chevron-left"></i>
-            </button>
-
-            <button type="button" class="pagination-btn active">1</button>
-
-            <button type="button" class="pagination-btn">2</button>
-
-            <button type="button" class="pagination-btn">3</button>
-
-            <span class="pagination-dots"> ... </span>
-
-            <button type="button" class="pagination-btn">16</button>
-
-            <button type="button" class="pagination-btn">
-              <i class="bi bi-chevron-right"></i>
-            </button>
-          </div>
+          <div class="services-pagination" id="bannerPagination"></div>
         </div>
       </main>
     </div>
@@ -256,6 +206,6 @@
 
     <!-- Custom JS -->
     <script src="/admin-js/main.js"></script>
-    <script src="/admin-js/service.js"></script>
+    <script src="/admin-js/mobile-banner.js"></script>
   </body>
 </html>

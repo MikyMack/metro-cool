@@ -28,7 +28,7 @@
 
     <link rel="stylesheet" href="/admin-css/admin.css" />
 
-        <!-- font awesome -->
+    <!-- font awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -56,27 +56,32 @@
 
         <!-- Navigation -->
         <nav class="sidebar-nav">
-          <a href="dashboard.html" class="nav-item">
+          <a href="/admin/dashboard" class="nav-item">
             <i class="bi bi-house-fill"></i>
             <span>Dashboard</span>
           </a>
 
-          <a href="services.html" class="nav-item">
+          <a href="/admin/services" class="nav-item">
             <i class="bi bi-grid-3x3-gap"></i>
             <span>Services</span>
           </a>
 
-          <a href="banners.html" class="nav-item">
+          <a href="/admin/main-banners" class="nav-item">
             <i class="bi bi-image"></i>
-            <span>Banners</span>
+            <span>Main Banners</span>
           </a>
 
-          <a href="blogs.html" class="nav-item">
+          <a href="/admin/mobile-banners" class="nav-item">
+            <i class="bi bi-image"></i>
+            <span>Mobile Banners</span>
+          </a>
+
+          <a href="/admin/blogs" class="nav-item">
             <i class="bi bi-file-earmark-text"></i>
             <span>Blogs</span>
           </a>
 
-          <a href="testimonials.html" class="nav-item">
+          <a href="/admin/testimonials" class="nav-item">
             <i class="bi bi-chat-square-text"></i>
             <span>Testimonials</span>
           </a>
@@ -215,7 +220,6 @@
                   <div class="form-group">
                     <label for="serviceCategory">
                       Category
-                      <span>*</span>
                     </label>
 
                     <div class="select-wrapper">
@@ -223,7 +227,7 @@
                         id="serviceCategory"
                         name="category"
                         class="form-control-custom"
-                        required
+                        
                       >
                         <option value="">Select category</option>
 
@@ -282,6 +286,114 @@
                       Add detailed information about this service.
                     </small>
                   </div>
+                </div>
+              </div>
+
+              <!-- =================================================
+     SEO SETTINGS
+================================================== -->
+
+              <div class="form-card seo-card">
+                <div class="form-card-header">
+                  <div>
+                    <h3>SEO Settings</h3>
+
+                    <p>Add search engine information for this service.</p>
+                  </div>
+                </div>
+
+                <div class="form-card-body">
+                  <!-- Meta Title -->
+
+                  <div class="form-group">
+                    <label for="metaTitle"> Meta Title </label>
+
+                    <input
+                      type="text"
+                      id="metaTitle"
+                      name="metaTitle"
+                      class="form-control-custom"
+                      maxlength="60"
+                      placeholder="Enter SEO meta title"
+                    />
+
+                    <div class="field-footer">
+                      <small> Recommended length: 50–60 characters. </small>
+
+                      <span id="metaTitleCount">0 / 60</span>
+                    </div>
+                  </div>
+
+                  <!-- Meta Description -->
+
+                  <div class="form-group">
+                    <label for="metaDescription"> Meta Description </label>
+
+                    <textarea
+                      id="metaDescription"
+                      name="metaDescription"
+                      class="form-control-custom"
+                      rows="4"
+                      maxlength="160"
+                      placeholder="Write a short description for search engines..."
+                    ></textarea>
+
+                    <div class="field-footer">
+                      <small> Recommended length: 140–160 characters. </small>
+
+                      <span id="metaDescriptionCount">0 / 160</span>
+                    </div>
+                  </div>
+
+                  <!-- Tags -->
+
+                  <div class="form-group">
+                    <label for="serviceTagInput"> Tags </label>
+
+                    <div class="tag-input-wrapper">
+                      <input
+                        type="text"
+                        id="serviceTagInput"
+                        class="form-control-custom"
+                        placeholder="Type a tag and press Enter"
+                      />
+
+                      <div
+                        id="serviceTagsContainer"
+                        class="service-tags-container"
+                      ></div>
+                    </div>
+
+                    <small>
+                      Add relevant keywords such as AC Service, AC Repair, AC
+                      Maintenance.
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <!-- =================================================
+     FAQ
+================================================== -->
+
+              <div class="form-card faq-card">
+                <div class="form-card-header">
+                  <div>
+                    <h3>Frequently Asked Questions</h3>
+
+                    <p>Add common questions and answers about this service.</p>
+                  </div>
+                </div>
+
+                <div class="form-card-body">
+                  <div id="faqContainer"></div>
+
+                  <!-- Add FAQ -->
+
+                  <button type="button" id="addFaqBtn" class="add-faq-btn">
+                    <i class="bi bi-plus-lg"></i>
+
+                    <span>Add FAQ</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -418,8 +530,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
-
-    
 
     <script src="/admin-js/main.js"></script>
     <script src="/admin-js/service-form.js"></script>
