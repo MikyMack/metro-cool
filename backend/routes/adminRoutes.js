@@ -73,4 +73,12 @@ router.get("/testimonial-form", isAdmin, (req, res) => {
   res.render("admin/testimonial-form");
 });
 
+router.get("/blogs", isAdmin, (req, res) => {
+  res.render("admin/blog");
+});
+
+router.get("/blog-form", isAdmin, (req, res) => {
+  res.render("admin/blog-form");
+});
+
 module.exports = router;

@@ -39,6 +39,16 @@ const {
   toggleTestimonialStatus,
 } = require("../controllers/testimonialController");
 
+const {
+  createBlog,
+  getAllBlogs,
+  getBlogById,
+  getBlogBySlug,
+  updateBlog,
+  deleteBlog,
+  toggleBlogStatus,
+} = require("../controllers/blogController");
+
 // Service Routes
 router.post("/services", upload.array("images", 10), createService);
 router.get("/services", getAllServices);
@@ -72,5 +82,14 @@ router.get("/testimonials/:id", getTestimonialById);
 router.put("/testimonials/:id", upload.single("image"), updateTestimonial);
 router.patch("/testimonials/:id/toggle-status", toggleTestimonialStatus);
 router.delete("/testimonials/:id", deleteTestimonial);
+
+// Blog Routes
+router.post("/blogs", upload.single("image"), createBlog);
+router.get("/blogs", getAllBlogs);
+router.get("/blogs/slug/:slug", getBlogBySlug);
+router.get("/blogs/:id", getBlogById);
+router.put("/blogs/:id", upload.single("image"), updateBlog);
+router.patch("/blogs/:id/toggle-status", toggleBlogStatus);
+router.delete("/blogs/:id", deleteBlog);
 
 module.exports = router;
