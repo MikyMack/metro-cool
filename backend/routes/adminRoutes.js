@@ -61,5 +61,16 @@ router.get("/mobile-banner-form", isAdmin, (req, res) => {
   res.render("admin/mobile-banner-form");
 });
 
+router.get("/testimonials", isAdmin, (req, res) => {
+  res.render("admin/testimonials");
+});
+
+router.get("/mobile-banner-form", isAdmin, (req, res) => {
+  res.render("admin/mobile-banner-form");
+});
+
+router.get("/testimonial-form", isAdmin, (req, res) => {
+  res.render("admin/testimonial-form");
+});
 
 module.exports = router;

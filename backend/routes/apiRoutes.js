@@ -30,6 +30,15 @@ const {
   toggleMobileBannerStatus,
 } = require("../controllers/mobileBannerController");
 
+const {
+  createTestimonial,
+  getAllTestimonials,
+  getTestimonialById,
+  updateTestimonial,
+  deleteTestimonial,
+  toggleTestimonialStatus,
+} = require("../controllers/testimonialController");
+
 // Service Routes
 router.post("/services", upload.array("images", 10), createService);
 router.get("/services", getAllServices);
@@ -55,5 +64,13 @@ router.get("/mobile-banners/:id", getMobileBannerById);
 router.put("/mobile-banners/:id", upload.single("image"), updateMobileBanner);
 router.patch("/mobile-banners/:id/toggle-status", toggleMobileBannerStatus);
 router.delete("/mobile-banners/:id", deleteMobileBanner);
+
+// testimonial Routes
+router.post("/testimonials", upload.single("image"), createTestimonial);
+router.get("/testimonials", getAllTestimonials);
+router.get("/testimonials/:id", getTestimonialById);
+router.put("/testimonials/:id", upload.single("image"), updateTestimonial);
+router.patch("/testimonials/:id/toggle-status", toggleTestimonialStatus);
+router.delete("/testimonials/:id", deleteTestimonial);
 
 module.exports = router;
