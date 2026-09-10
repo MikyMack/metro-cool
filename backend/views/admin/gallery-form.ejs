@@ -2,32 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Add Banner | Servizio Admin</title>
+    <title>Add Gallery Image - Metro Cool Admin</title>
 
-    <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
 
-    <!-- Bootstrap Icons -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
 
-    <!-- Common Styles -->
     <link rel="stylesheet" href="/admin-css/admin.css" />
   </head>
 
   <body>
-    <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
-
+    <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-inner">
         <!-- Logo -->
@@ -90,165 +83,133 @@
       </div>
     </aside>
 
-    <!-- Mobile overlay -->
-
+    <!-- Overlay -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- =====================================================
-         MAIN CONTENT
-    ====================================================== -->
-
+    <!-- Main Content -->
     <main class="main-content">
-      <!-- HEADER -->
-
+      <!-- Header -->
       <header class="top-header">
         <div class="header-left">
-          <!-- Search -->
-          <div class="header-search">
-            <input type="text" placeholder="Search anything..." />
+          <button type="button" class="sidebar-toggle" id="sidebarToggle">
+            <i class="bi bi-list"></i>
+          </button>
 
-            <button type="button">
-              <i class="bi bi-search"></i>
-            </button>
+          <div class="header-search">
+            <i class="bi bi-search"></i>
+
+            <input type="text" placeholder="Search..." />
           </div>
         </div>
 
-        <div class="header-right">
-          <!-- User -->
-          <div class="header-user">
-            <div class="header-user-info">
-              <strong>Metro Cool</strong>
-              <span>Admin</span>
-            </div>
+        <div class="header-user">
+          <div class="header-user-info">
+            <strong>Metro Cool</strong>
+            <span>Admin</span>
+          </div>
 
-            <div class="header-user-avatar">
-              <img src="assets/images/user.jpg" alt="Admin" />
-            </div>
+          <div class="header-user-avatar">
+            <img src="assets/images/user.jpg" alt="Admin" />
           </div>
         </div>
       </header>
 
-      <!-- =====================================================
-             PAGE
-        ====================================================== -->
-
-      <div class="dashboard-content service-form-page">
-        <!-- PAGE HEADER -->
-
+      <!-- Content -->
+      <div class="dashboard-content">
+        <!-- Page Header -->
         <div class="service-form-header">
           <div>
-            <h2 id="formPageTitle">Add New Banner</h2>
+            <h2 id="formPageTitle">Add New Gallery Image</h2>
 
             <div class="breadcrumb-custom">
               <a href="index.html"> Dashboard </a>
 
               <i class="bi bi-chevron-right"></i>
 
-              <a href="banners.html"> Banners </a>
+              <a href="gallery.html"> Gallery </a>
 
               <i class="bi bi-chevron-right"></i>
 
-              <span id="breadcrumbCurrent"> Add Banner </span>
+              <span id="breadcrumbCurrent"> Add Gallery Image </span>
             </div>
           </div>
 
-          <a href="/admin/main-banners" class="back-btn">
+          <a href="/admin/gallery" class="back-btn">
             <i class="bi bi-arrow-left"></i>
 
-            Back to Banners
+            Back to Gallery
           </a>
         </div>
 
-        <!-- =====================================================
-                 FORM
-            ====================================================== -->
-
-        <form id="bannerForm" class="banner-form">
+        <!-- Form -->
+        <form id="galleryForm" class="banner-form">
           <div class="row g-4">
             <!-- =================================================
-                         LEFT : BANNER CONTENT
-                    ================================================== -->
+         LEFT : GALLERY INFORMATION
+    ================================================== -->
 
             <div class="col-12 col-xl-8">
               <div class="form-card">
                 <div class="form-card-header">
                   <div>
-                    <h3>Banner Information</h3>
-
-                    <p>Add the content that will appear on the banner.</p>
+                    <h3>Gallery Information</h3>
+                    <p>Add the details for this gallery image.</p>
                   </div>
                 </div>
 
                 <div class="form-card-body">
-                  <!-- Subtitle -->
-
-                  <div class="form-group">
-                    <label for="bannerSubtitle"> Subtitle </label>
-
-                    <input
-                      type="text"
-                      id="bannerSubtitle"
-                      name="subtitle"
-                      class="form-control-custom"
-                      placeholder="e.g. Quality Services"
-                    />
-                  </div>
-
                   <!-- Title -->
-
                   <div class="form-group">
-                    <label for="bannerTitle"> Title </label>
+                    <label for="galleryTitle">Title</label>
 
                     <input
                       type="text"
-                      id="bannerTitle"
+                      id="galleryTitle"
                       name="title"
                       class="form-control-custom"
-                      placeholder="Enter banner title"
+                      placeholder="Enter image title"
                     />
                   </div>
 
-                  <!-- Description -->
-
+                  <!-- Sort Order -->
                   <div class="form-group">
-                    <label for="bannerDescription"> Description </label>
+                    <label for="gallerySortOrder">Sort Order</label>
 
-                    <textarea
-                      id="bannerDescription"
-                      name="description"
-                      class="form-control-custom banner-description"
-                      rows="6"
-                      placeholder="Enter a short description for the banner..."
-                    ></textarea>
+                    <input
+                      type="number"
+                      id="gallerySortOrder"
+                      name="sort_order"
+                      class="form-control-custom"
+                      placeholder="e.g. 1"
+                      min="0"
+                      value="0"
+                    />
                   </div>
 
-                  <!-- Link -->
-
+                  <!-- Alt Text -->
                   <div class="form-group">
-                    <label for="bannerLink">Link</label>
+                    <label for="galleryAltText">Alt Text</label>
 
                     <input
                       type="text"
-                      id="bannerLink"
-                      name="link"
+                      id="galleryAltText"
+                      name="alt_text"
                       class="form-control-custom"
-                      placeholder="e.g. /services"
+                      placeholder="e.g. AC service technician"
                     />
                   </div>
 
                   <!-- Status -->
-
                   <div class="form-group">
-                    <label for="bannerStatus"> Status </label>
+                    <label for="galleryStatus">Status</label>
 
                     <div class="select-wrapper">
                       <select
-                        id="bannerStatus"
+                        id="galleryStatus"
                         name="status"
                         class="form-control-custom"
                       >
                         <option value="active">Active</option>
-
                         <option value="inactive">Inactive</option>
                       </select>
 
@@ -260,50 +221,47 @@
             </div>
 
             <!-- =================================================
-                         RIGHT : IMAGE
-                    ================================================== -->
+         RIGHT : IMAGE
+    ================================================== -->
 
             <div class="col-12 col-xl-4">
               <div class="form-card">
                 <div class="form-card-header">
                   <div>
-                    <h3>Banner Image</h3>
-
-                    <p>Upload the main banner image.</p>
+                    <h3>Gallery Image</h3>
+                    <p>Upload the image for this gallery item.</p>
                   </div>
                 </div>
 
                 <div class="form-card-body">
                   <div
                     class="service-image-preview banner-image-preview"
-                    id="bannerImagePreview"
+                    id="galleryImagePreview"
                   >
                     <div class="image-placeholder">
                       <i class="bi bi-image"></i>
 
-                      <strong> No image selected </strong>
+                      <strong>No image selected</strong>
 
-                      <span> JPG, PNG or WebP </span>
+                      <span>JPG, PNG or WebP</span>
                     </div>
                   </div>
 
-                  <label for="bannerImage" class="image-upload-btn">
+                  <label for="galleryImage" class="image-upload-btn">
                     <i class="bi bi-cloud-arrow-up"></i>
-
                     Choose Image
                   </label>
 
                   <input
                     type="file"
-                    id="bannerImage"
+                    id="galleryImage"
                     name="image"
                     accept="image/jpeg,image/png,image/webp"
                     hidden
                   />
 
                   <div class="image-help">
-                    Recommended:
-                    <strong>1600 × 600px</strong>
+                    Recommended image size according to your website design.
 
                     <br />
 
@@ -316,16 +274,16 @@
               <!-- ACTIONS -->
 
               <div class="form-actions">
-                <a href="/admin/main-banners" class="cancel-btn"> Cancel </a>
+                <a href="/admin/gallery" class="cancel-btn"> Cancel </a>
 
                 <button
                   type="submit"
                   class="save-service-btn"
-                  id="saveBannerBtn"
+                  id="saveGalleryBtn"
                 >
                   <i class="bi bi-check-lg"></i>
 
-                  <span id="saveButtonText"> Save Banner </span>
+                  <span id="saveGalleryButtonText"> Save Image </span>
                 </button>
               </div>
             </div>
@@ -334,9 +292,7 @@
       </div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script src="/admin-js/main-banner.js"></script>
-    <script src="/admin-js/main.js"></script>
+    <script src="assets/js/style.js"></script>
+    <script src="/admin-js/gallery.js"></script>
   </body>
 </html>

@@ -21,7 +21,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/admin-css/admin.css" />
 
-    <!-- font-awesome -->
+    <!-- font awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -64,7 +64,7 @@
               <span>Main Banners</span>
             </a>
 
-            <a href="/admin/mobile-banners" class="nav-item active">
+            <a href="/admin/mobile-banners" class="nav-item">
               <i class="bi bi-image"></i>
               <span>Mobile Banners</span>
             </a>
@@ -74,7 +74,7 @@
               <span>Blogs</span>
             </a>
 
-            <a href="/admin/gallery" class="nav-item">
+            <a href="/admin/gallery" class="nav-item active">
               <i class="bi bi-file-earmark-text"></i>
               <span>Gallery</span>
             </a>
@@ -102,76 +102,67 @@
          MAIN CONTENT
     ========================================== -->
       <main class="main-content">
-        <!-- =========================================
-         TOP HEADER
-    ========================================== -->
         <header class="top-header">
           <div class="header-left">
-            <!-- Search -->
-            <div class="header-search">
-              <input type="text" placeholder="Search anything..." />
+            <button class="sidebar-toggle" id="sidebarToggle">
+              <i class="bi bi-list"></i>
+            </button>
 
-              <button type="button">
-                <i class="bi bi-search"></i>
-              </button>
+            <div class="header-search">
+              <i class="bi bi-search"></i>
+
+              <input
+                type="text"
+                placeholder="Search gallery..."
+                id="gallerySearch"
+              />
             </div>
           </div>
 
-          <div class="header-right">
-            <!-- User -->
-            <div class="header-user">
-              <div class="header-user-info">
-                <strong>Metro Cool</strong>
-                <span>Admin</span>
-              </div>
+          <div class="header-user">
+            <div class="header-user-info">
+              <strong>Metro Cool</strong>
+              <span>Admin</span>
+            </div>
 
-              <div class="header-user-avatar">
-                <img src="assets/images/user.jpg" alt="Admin" />
-              </div>
+            <div class="header-user-avatar">
+              <img src="assets/images/user.jpg" alt="Admin" />
             </div>
           </div>
         </header>
 
-        <!-- =========================================
-         BANNERS CONTENT
-    ========================================== -->
-
         <div class="dashboard-content banners-page">
-          <!-- =====================================
-             PAGE HEADER
-        ====================================== -->
+          <!-- PAGE HEADER -->
 
           <div class="banners-page-header">
             <div class="page-title-wrapper">
-              <h2>Mobile Banners</h2>
+              <h2>Gallery</h2>
 
               <div class="breadcrumb-custom">
-                <a href="index.html"> Dashboard </a>
+                <a href="/admin"> Dashboard </a>
 
                 <i class="bi bi-chevron-right"></i>
 
-                <span>Mobile Banners</span>
+                <span>Gallery</span>
               </div>
             </div>
 
-            <!-- Add Banner -->
-
-            <a href="/admin/mobile-banner-form" class="add-banner-btn">
+            <a href="/admin/gallery-form" class="add-banner-btn">
               <i class="bi bi-plus-lg"></i>
 
-              <span>Add New Banner</span>
+              <span>Add New Image</span>
             </a>
           </div>
 
-          <!-- =====================================
-             FILTER
-        ====================================== -->
+          <!-- FILTER -->
 
           <div class="banners-toolbar">
             <div class="banner-filter">
-              <select id="bannerStatusFilter">
+              <select id="galleryStatusFilter">
                 <option value="">All Status</option>
+
                 <option value="active">Active</option>
+
                 <option value="inactive">Inactive</option>
               </select>
 
@@ -179,29 +170,23 @@
             </div>
           </div>
 
-          <!-- =====================================
-             BANNERS GRID
-        ====================================== -->
+          <!-- GALLERY GRID -->
 
-          <div class="row g-3 banners-grid" id="bannersGrid"></div>
+          <div class="row g-3 banners-grid" id="galleryGrid"></div>
 
-          <!-- =====================================
-             EMPTY STATE
-        ====================================== -->
+          <!-- EMPTY STATE -->
 
-          <div class="banners-empty" id="bannersEmpty">
+          <div class="banners-empty" id="galleryEmpty" style="display: none">
             <i class="bi bi-images"></i>
 
-            <h4>No banners found</h4>
+            <h4>No gallery images found</h4>
 
-            <p>No banners match the selected status.</p>
+            <p>No gallery images match your search or filter.</p>
           </div>
 
-          <!-- =====================================
-             PAGINATION
-        ====================================== -->
+          <!-- PAGINATION -->
 
-          <div class="services-pagination" id="bannerPagination"></div>
+          <div class="services-pagination" id="galleryPagination"></div>
         </div>
       </main>
     </div>
@@ -210,7 +195,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom JS -->
-    <script src="/admin-js/main.js"></script>
-    <script src="/admin-js/mobile-banner.js"></script>
+    <script src="/admin-js/gallery.js"></script>
   </body>
 </html>

@@ -6136,3 +6136,190 @@ textarea.form-control-custom {
   opacity: 0.5;
   cursor: not-allowed;
 }
+/* =========================================================
+   GALLERY CARD
+========================================================= */
+
+.gallery-card {
+  background: #fff;
+  border: 1px solid #e9e9e9;
+  border-radius: 12px;
+  overflow: hidden;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+}
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.gallery-card .banner-card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.gallery-card .banner-card-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.gallery-card:hover .banner-card-image img {
+  transform: scale(1.035);
+}
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.gallery-card .banner-status {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  padding: 5px 9px;
+
+  border-radius: 5px;
+
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(4px);
+}
+
+.gallery-card .banner-status.active {
+  color: #1d6b42;
+}
+
+.gallery-card .banner-status.inactive {
+  color: #777;
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.gallery-card .banner-card-content {
+  padding: 13px 14px 14px;
+}
+
+.gallery-card .banner-card-title-row {
+  margin: 0;
+}
+
+.gallery-card .banner-card-title-row h4 {
+  margin: 0;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+
+  color: #222;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =========================================================
+   META
+========================================================= */
+
+.gallery-card-meta {
+  display: flex;
+  align-items: center;
+
+  margin-top: 6px;
+
+  font-size: 11px;
+  color: #8a8a8a;
+}
+
+.gallery-card-meta i {
+  margin-right: 4px;
+  font-size: 12px;
+}
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.gallery-card .banner-card-actions {
+  display: flex;
+  align-items: center;
+
+  margin-top: 12px;
+  padding-top: 10px;
+
+  border-top: 1px solid #f0f0f0;
+
+  gap: 6px;
+}
+
+/* Toggle */
+
+.gallery-card .service-status-toggle {
+  margin-right: auto;
+}
+
+/* Edit / Delete */
+
+.gallery-card .banner-action-btn {
+  width: 31px;
+  height: 31px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e7e7e7;
+  border-radius: 7px;
+
+  background: #fff;
+  color: #555;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.gallery-card .banner-action-btn:hover {
+  background: #f7f7f7;
+  border-color: #dcdcdc;
+}
+
+.gallery-card .banner-action-btn.delete:hover {
+  color: #d64545;
+  border-color: #f0cccc;
+  background: #fff7f7;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 575px) {
+  .gallery-card .banner-card-image {
+    aspect-ratio: 16 / 11;
+  }
+
+  .gallery-card .banner-card-content {
+    padding: 12px;
+  }
+}

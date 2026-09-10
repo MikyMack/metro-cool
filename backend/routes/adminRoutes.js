@@ -81,4 +81,12 @@ router.get("/blog-form", isAdmin, (req, res) => {
   res.render("admin/blog-form");
 });
 
+router.get("/gallery", isAdmin, (req, res) => {
+  res.render("admin/gallery");
+});
+
+router.get("/gallery-form", isAdmin, (req, res) => {
+  res.render("admin/gallery-form");
+});
+
 module.exports = router;

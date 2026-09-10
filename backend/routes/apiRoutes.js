@@ -49,6 +49,16 @@ const {
   toggleBlogStatus,
 } = require("../controllers/blogController");
 
+const {
+  createGallery,
+  getAllGallery,
+  getGalleryById,
+  updateGallery,
+  deleteGallery,
+  toggleGalleryStatus,
+  updateGallerySortOrder,
+} = require("../controllers/galleryController");
+
 // Service Routes
 router.post("/services", upload.array("images", 10), createService);
 router.get("/services", getAllServices);
@@ -91,5 +101,14 @@ router.get("/blogs/:id", getBlogById);
 router.put("/blogs/:id", upload.single("image"), updateBlog);
 router.patch("/blogs/:id/toggle-status", toggleBlogStatus);
 router.delete("/blogs/:id", deleteBlog);
+
+// GALLERY ROUTES
+router.post("/gallery", upload.single("image"), createGallery);
+router.get("/gallery", getAllGallery);
+router.get("/gallery/:id", getGalleryById);
+router.put("/gallery/:id", upload.single("image"), updateGallery);
+router.patch("/gallery/:id/toggle-status", toggleGalleryStatus);
+router.patch("/gallery/:id/sort-order", updateGallerySortOrder);
+router.delete("/gallery/:id", deleteGallery);
 
 module.exports = router;
