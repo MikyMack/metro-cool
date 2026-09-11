@@ -52,6 +52,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const imageCount = document.getElementById("imageCount");
 
   // ========================================
+  // SEO ELEMENTS
+  // ========================================
+
+  const metaTitleInput = document.getElementById("metaTitle");
+
+  const metaDescriptionInput = document.getElementById("metaDescription");
+
+  const metaTitleCount = document.getElementById("metaTitleCount");
+
+  const metaDescriptionCount = document.getElementById("metaDescriptionCount");
+
+  // ========================================
+  // TAG ELEMENTS
+  // ========================================
+
+  const serviceTagInput = document.getElementById("serviceTagInput");
+
+  const serviceTagsContainer = document.getElementById("serviceTagsContainer");
+
+  // ========================================
+  // FAQ ELEMENTS
+  // ========================================
+
+  const faqContainer = document.getElementById("faqContainer");
+
+  const addFaqBtn = document.getElementById("addFaqBtn");
+
+  // ========================================
   // EDIT MODE
   // ========================================
 
@@ -75,6 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let removedImages = [];
 
   // ========================================
+  // SEO / FAQ STATE
+  // ========================================
+
+  let serviceTags = [];
+
+  let faqItems = [];
+
+  // ========================================
   // LOAD SERVICE
   // ========================================
 
@@ -82,6 +118,9 @@ document.addEventListener("DOMContentLoaded", () => {
     loadService(serviceId);
   } else {
     updateImageCount();
+    updateMetaCounters();
+    renderTags();
+    renderFaqs();
   }
 
   // ========================================
@@ -96,6 +135,37 @@ document.addEventListener("DOMContentLoaded", () => {
     shortDescriptionInput.addEventListener("input", updateCounter);
 
     updateCounter();
+  }
+
+  // ========================================
+  // META TITLE COUNTER
+  // ========================================
+
+  if (metaTitleInput && metaTitleCount) {
+    const updateMetaTitleCounter = () => {
+      metaTitleCount.textContent = `${metaTitleInput.value.length} / 60`;
+    };
+
+    metaTitleInput.addEventListener("input", updateMetaTitleCounter);
+
+    updateMetaTitleCounter();
+  }
+
+  // ========================================
+  // META DESCRIPTION COUNTER
+  // ========================================
+
+  if (metaDescriptionInput && metaDescriptionCount) {
+    const updateMetaDescriptionCounter = () => {
+      metaDescriptionCount.textContent = `${metaDescriptionInput.value.length} / 160`;
+    };
+
+    metaDescriptionInput.addEventListener(
+      "input",
+      updateMetaDescriptionCounter,
+    );
+
+    updateMetaDescriptionCounter();
   }
 
   // ========================================
@@ -196,7 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       imageItem.innerHTML = `
           <img
-            src="${image}"
+            src="${escapeHtml(image)}"
             alt="Service image"
           />
 
@@ -289,6 +359,228 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ========================================
+  // TAGS
+  // ========================================
+
+  if (serviceTagInput) {
+    serviceTagInput.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter") {
+        return;
+      }
+
+      event.preventDefault();
+
+      const tag = serviceTagInput.value.trim();
+
+      if (!tag) return;
+
+      // Prevent duplicate tags
+      const exists = serviceTags.some(
+        (existingTag) => existingTag.toLowerCase() === tag.toLowerCase(),
+      );
+
+      if (exists) {
+        serviceTagInput.value = "";
+        return;
+      }
+
+      serviceTags.push(tag);
+
+      serviceTagInput.value = "";
+
+      renderTags();
+    });
+  }
+
+  // ========================================
+  // RENDER TAGS
+  // ========================================
+
+  function renderTags() {
+    if (!serviceTagsContainer) {
+      return;
+    }
+
+    serviceTagsContainer.innerHTML = "";
+
+    serviceTags.forEach((tag, index) => {
+      const tagElement = document.createElement("div");
+
+      tagElement.className = "service-tag";
+
+      tagElement.innerHTML = `
+          <span>
+            ${escapeHtml(tag)}
+          </span>
+
+          <button
+            type="button"
+            class="remove-tag-btn"
+            data-index="${index}"
+            title="Remove tag"
+            aria-label="Remove tag"
+          >
+            <i class="bi bi-x"></i>
+          </button>
+        `;
+
+      serviceTagsContainer.appendChild(tagElement);
+    });
+  }
+
+  // ========================================
+  // REMOVE TAG
+  // ========================================
+
+  if (serviceTagsContainer) {
+    serviceTagsContainer.addEventListener("click", (event) => {
+      const button = event.target.closest(".remove-tag-btn");
+
+      if (!button) return;
+
+      const index = Number(button.dataset.index);
+
+      serviceTags.splice(index, 1);
+
+      renderTags();
+    });
+  }
+
+  // ========================================
+  // ADD FAQ
+  // ========================================
+
+  if (addFaqBtn) {
+    addFaqBtn.addEventListener("click", () => {
+      faqItems.push({
+        question: "",
+        answer: "",
+      });
+
+      renderFaqs();
+
+      // Focus newly added question
+      const questions = faqContainer.querySelectorAll(".faq-question");
+
+      if (questions.length) {
+        questions[questions.length - 1].focus();
+      }
+    });
+  }
+
+  // ========================================
+  // RENDER FAQ
+  // ========================================
+
+  function renderFaqs() {
+    if (!faqContainer) {
+      return;
+    }
+
+    faqContainer.innerHTML = "";
+
+    faqItems.forEach((faq, index) => {
+      const faqElement = document.createElement("div");
+
+      faqElement.className = "faq-item";
+
+      faqElement.innerHTML = `
+          <div class="faq-item-header">
+
+            <span class="faq-item-title">
+              FAQ ${index + 1}
+            </span>
+
+            <button
+              type="button"
+              class="remove-faq-btn"
+              data-index="${index}"
+            >
+              <i class="bi bi-trash3"></i>
+              Remove
+            </button>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Question
+            </label>
+
+            <input
+              type="text"
+              class="form-control-custom faq-question"
+              data-index="${index}"
+              value="${escapeHtml(faq.question || "")}"
+              placeholder="Enter frequently asked question"
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Answer
+            </label>
+
+            <textarea
+              class="form-control-custom faq-answer"
+              data-index="${index}"
+              rows="4"
+              placeholder="Enter the answer"
+            >${escapeHtml(faq.answer || "")}</textarea>
+
+          </div>
+        `;
+
+      faqContainer.appendChild(faqElement);
+    });
+  }
+
+  // ========================================
+  // UPDATE FAQ
+  // ========================================
+
+  if (faqContainer) {
+    faqContainer.addEventListener("input", (event) => {
+      const index = Number(event.target.dataset.index);
+
+      if (Number.isNaN(index)) {
+        return;
+      }
+
+      if (event.target.classList.contains("faq-question")) {
+        faqItems[index].question = event.target.value;
+      }
+
+      if (event.target.classList.contains("faq-answer")) {
+        faqItems[index].answer = event.target.value;
+      }
+    });
+  }
+
+  // ========================================
+  // REMOVE FAQ
+  // ========================================
+
+  if (faqContainer) {
+    faqContainer.addEventListener("click", (event) => {
+      const button = event.target.closest(".remove-faq-btn");
+
+      if (!button) return;
+
+      const index = Number(button.dataset.index);
+
+      faqItems.splice(index, 1);
+
+      renderFaqs();
+    });
+  }
+
+  // ========================================
   // FORM SUBMIT
   // ========================================
 
@@ -350,6 +642,32 @@ document.addEventListener("DOMContentLoaded", () => {
         "status",
         selectedStatus ? selectedStatus.value : "published",
       );
+
+      // ====================================
+      // SEO
+      // ====================================
+
+      formData.append(
+        "metaTitle",
+        metaTitleInput ? metaTitleInput.value.trim() : "",
+      );
+
+      formData.append(
+        "metaDescription",
+        metaDescriptionInput ? metaDescriptionInput.value.trim() : "",
+      );
+
+      // ====================================
+      // TAGS
+      // ====================================
+
+      formData.append("tags", JSON.stringify(serviceTags));
+
+      // ====================================
+      // FAQ
+      // ====================================
+
+      formData.append("faq", JSON.stringify(faqItems));
 
       // ====================================
       // ADD NEW IMAGES
@@ -474,7 +792,7 @@ document.addEventListener("DOMContentLoaded", () => {
       shortDescriptionInput.value = service.shortDescription || "";
 
       // ====================================
-      // COUNTER
+      // SHORT DESCRIPTION COUNTER
       // ====================================
 
       if (shortDescriptionCount) {
@@ -504,12 +822,53 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // ====================================
+      // SEO VALUES
+      // ====================================
+
+      if (metaTitleInput) {
+        metaTitleInput.value = service.metaTitle || "";
+      }
+
+      if (metaDescriptionInput) {
+        metaDescriptionInput.value = service.metaDescription || "";
+      }
+
+      // ====================================
+      // SEO COUNTERS
+      // ====================================
+
+      updateMetaCounters();
+
+      // ====================================
+      // TAGS
+      // ====================================
+
+      serviceTags = Array.isArray(service.tags) ? [...service.tags] : [];
+
+      renderTags();
+
+      // ====================================
+      // FAQ
+      // ====================================
+
+      faqItems = Array.isArray(service.faq)
+        ? service.faq.map((faq) => ({
+            question: faq.question || "",
+
+            answer: faq.answer || "",
+          }))
+        : [];
+
+      renderFaqs();
+
+      // ====================================
       // EXISTING IMAGES
       // ====================================
 
       existingImages = Array.isArray(service.images) ? [...service.images] : [];
 
       selectedImages = [];
+
       removedImages = [];
 
       renderImages();
@@ -519,6 +878,20 @@ document.addEventListener("DOMContentLoaded", () => {
       alert(error.message);
 
       window.location.href = "/admin/services";
+    }
+  }
+
+  // ========================================
+  // META COUNTERS
+  // ========================================
+
+  function updateMetaCounters() {
+    if (metaTitleInput && metaTitleCount) {
+      metaTitleCount.textContent = `${metaTitleInput.value.length} / 60`;
+    }
+
+    if (metaDescriptionInput && metaDescriptionCount) {
+      metaDescriptionCount.textContent = `${metaDescriptionInput.value.length} / 160`;
     }
   }
 
@@ -548,5 +921,18 @@ document.addEventListener("DOMContentLoaded", () => {
         <span>JPG, PNG or WebP</span>
       </div>
     `;
+  }
+
+  // ========================================
+  // ESCAPE HTML
+  // ========================================
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   }
 });

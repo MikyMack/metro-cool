@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Metro Cool - Admin Services</title>
+    <title>Service Management | Metro Cool Admin</title>
 
     <!-- Bootstrap -->
     <link
@@ -49,35 +49,50 @@
 
           <!-- Navigation -->
           <nav class="sidebar-nav">
-            <a href="dashboard.html" class="nav-item">
+            <a href="/admin/dashboard" class="nav-item">
               <i class="bi bi-house-fill"></i>
               <span>Dashboard</span>
             </a>
 
-            <a href="services.html" class="nav-item active">
+            <a href="/admin/services" class="nav-item active">
               <i class="bi bi-grid-3x3-gap"></i>
               <span>Services</span>
             </a>
 
-            <a href="banners.html" class="nav-item">
+            <a href="/admin/main-banners" class="nav-item">
               <i class="bi bi-image"></i>
-              <span>Banners</span>
+              <span>Main Banners</span>
             </a>
 
-            <a href="blogs.html" class="nav-item">
+            <a href="/admin/mobile-banners" class="nav-item">
+              <i class="bi bi-image"></i>
+              <span>Mobile Banners</span>
+            </a>
+
+            <a href="/admin/blogs" class="nav-item">
               <i class="bi bi-file-earmark-text"></i>
               <span>Blogs</span>
             </a>
 
-            <a href="testimonials.html" class="nav-item">
+            <a href="/admin/gallery" class="nav-item">
+              <i class="bi bi-file-earmark-text"></i>
+              <span>Gallery</span>
+            </a>
+
+            <a href="/admin/testimonials" class="nav-item">
               <i class="bi bi-chat-square-text"></i>
               <span>Testimonials</span>
+            </a>
+
+            <a href="/admin/enquiries" class="nav-item">
+              <i class="bi bi-inbox"></i>
+              <span>Enquiries</span>
             </a>
           </nav>
 
           <!-- Bottom Section -->
           <div class="sidebar-bottom">
-            <a href="#" class="logout-link">
+            <a href="/admin/logout" class="logout-link">
               <i class="bi bi-box-arrow-right"></i>
               <span>Logout</span>
             </a>
@@ -97,14 +112,9 @@
     ========================================== -->
         <header class="top-header">
           <div class="header-left">
-            <!-- Search -->
-            <div class="header-search">
-              <input type="text" placeholder="Search anything..." />
-
-              <button type="button">
-                <i class="bi bi-search"></i>
-              </button>
-            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+              <i class="bi bi-list"></i>
+            </button>
           </div>
 
           <div class="header-right">
@@ -136,7 +146,7 @@
               <h2>Services</h2>
 
               <div class="breadcrumb-custom">
-                <a href="index.html"> Dashboard </a>
+                <a href="/admin/dashboard"> Dashboard </a>
 
                 <i class="bi bi-chevron-right"></i>
 
@@ -169,22 +179,6 @@
                 />
               </div>
 
-              <!-- Category -->
-              <div class="filter-select">
-                <select id="categoryFilter">
-                  <option value="">All Categories</option>
-
-                  <option value="AC">AC</option>
-
-                  <option value="Refrigeration">Refrigeration</option>
-
-                  <option value="Washing Machine">Washing Machine</option>
-
-                  
-                </select>
-
-                <i class="bi bi-chevron-down"></i>
-              </div>
 
               <!-- Status -->
               <div class="filter-select">

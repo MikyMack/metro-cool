@@ -8,10 +8,20 @@ const path = require("path");
 
 const createService = async (req, res) => {
   try {
-    const { title, category, shortDescription, content, status } = req.body;
+    const {
+      title,
+      category,
+      shortDescription,
+      content,
+      status,
+      faq,
+      metaTitle,
+      metaDescription,
+      tags,
+    } = req.body;
 
     // Validate required fields
-    if (!title || !category || !shortDescription || !content) {
+    if (!title  || !shortDescription || !content) {
       return res.status(400).json({
         success: false,
         message: "Please fill all required fields.",
@@ -28,6 +38,19 @@ const createService = async (req, res) => {
 
     const imagePaths = req.files.map((file) => `/uploads/${file.filename}`);
 
+    let parsedFaq = [];
+    let parsedTags = [];
+
+    try {
+      parsedFaq = faq ? JSON.parse(faq) : [];
+      parsedTags = tags ? JSON.parse(tags) : [];
+    } catch (error) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid FAQ or tags format.",
+      });
+    }
+
     const service = await Service.create({
       title,
       category,
@@ -35,6 +58,11 @@ const createService = async (req, res) => {
       content,
       status: status || "published",
       images: imagePaths,
+
+      faq: parsedFaq,
+      metaTitle: metaTitle || "",
+      metaDescription: metaDescription || "",
+      tags: parsedTags,
     });
 
     return res.status(201).json({
@@ -166,6 +194,27 @@ const updateService = async (req, res) => {
     service.content = req.body.content;
     service.status = req.body.status || "published";
 
+    // ==============================
+    // FAQ + SEO
+    // ==============================
+
+    let parsedFaq = [];
+    let parsedTags = [];
+
+    try {
+      parsedFaq = req.body.faq ? JSON.parse(req.body.faq) : [];
+      parsedTags = req.body.tags ? JSON.parse(req.body.tags) : [];
+    } catch (error) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid FAQ or tags format.",
+      });
+    }
+
+    service.faq = parsedFaq;
+    service.metaTitle = req.body.metaTitle || "";
+    service.metaDescription = req.body.metaDescription || "";
+    service.tags = parsedTags;
     // ========================================
     // EXISTING IMAGES
     // ========================================

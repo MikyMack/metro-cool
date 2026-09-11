@@ -5,7 +5,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Add Blog | Servizio Admin</title>
+    <title>Blog Management | Metro Cool Admin</title>
 
     <!-- Bootstrap -->
     <link
@@ -20,13 +20,13 @@
     />
 
     <!-- Common styles -->
-    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="/admin-css/admin.css" />
 
-    <!-- Reuse service form styles -->
-    <link rel="stylesheet" href="css/service-form.css" />
-
-    <!-- Only blog-specific styles -->
-    <link rel="stylesheet" href="css/blog-form.css" />
+    <!-- Quill Editor -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -50,35 +50,50 @@
 
         <!-- Navigation -->
         <nav class="sidebar-nav">
-          <a href="dashboard.html" class="nav-item ">
+          <a href="/admin/dashboard" class="nav-item">
             <i class="bi bi-house-fill"></i>
             <span>Dashboard</span>
           </a>
 
-          <a href="services.html" class="nav-item">
+          <a href="/admin/services" class="nav-item">
             <i class="bi bi-grid-3x3-gap"></i>
             <span>Services</span>
           </a>
 
-          <a href="banners.html" class="nav-item">
+          <a href="/admin/main-banners" class="nav-item">
             <i class="bi bi-image"></i>
-            <span>Banners</span>
+            <span>Main Banners</span>
           </a>
 
-          <a href="blogs.html" class="nav-item">
+          <a href="/admin/mobile-banners" class="nav-item">
+            <i class="bi bi-image"></i>
+            <span>Mobile Banners</span>
+          </a>
+
+          <a href="/admin/blogs" class="nav-item">
             <i class="bi bi-file-earmark-text"></i>
             <span>Blogs</span>
           </a>
 
-          <a href="testimonials.html" class="nav-item">
+          <a href="/admin/gallery" class="nav-item">
+              <i class="bi bi-file-earmark-text"></i>
+              <span>Gallery</span>
+            </a>
+
+          <a href="/admin/testimonials" class="nav-item">
             <i class="bi bi-chat-square-text"></i>
             <span>Testimonials</span>
           </a>
+
+          <a href="/admin/enquiries" class="nav-item">
+              <i class="bi bi-inbox"></i>
+              <span>Enquiries</span>
+            </a>
         </nav>
 
         <!-- Bottom Section -->
         <div class="sidebar-bottom">
-          <a href="#" class="logout-link">
+          <a href="/admin/logout" class="logout-link">
             <i class="bi bi-box-arrow-right"></i>
             <span>Logout</span>
           </a>
@@ -100,31 +115,26 @@
         ================================================== -->
 
       <header class="top-header">
-        <div class="header-left">
-          <!-- Search -->
-          <div class="header-search">
-            <input type="text" placeholder="Search anything..." />
-
-            <button type="button">
-              <i class="bi bi-search"></i>
+          <div class="header-left">
+            <button class="sidebar-toggle" id="sidebarToggle">
+              <i class="bi bi-list"></i>
             </button>
           </div>
-        </div>
 
-        <div class="header-right">
-          <!-- User -->
-          <div class="header-user">
-            <div class="header-user-info">
-              <strong>Metro Cool</strong>
-              <span>Admin</span>
-            </div>
+          <div class="header-right">
+            <!-- User -->
+            <div class="header-user">
+              <div class="header-user-info">
+                <strong>Metro Cool</strong>
+                <span>Admin</span>
+              </div>
 
-            <div class="header-user-avatar">
-              <img src="assets/images/user.jpg" alt="Admin" />
+              <div class="header-user-avatar">
+                <img src="assets/images/user.jpg" alt="Admin" />
+              </div>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
 
       <!-- =================================================
              PAGE CONTENT
@@ -150,7 +160,7 @@
             </div>
           </div>
 
-          <a href="blogs.html" class="back-btn">
+          <a href="/admin/blogs" class="back-btn">
             <i class="bi bi-arrow-left"></i>
 
             Back to Blogs
@@ -197,6 +207,24 @@
                     />
                   </div>
 
+                  <!-- AUTHOR -->
+
+                  <div class="form-group">
+                    <label for="blogAuthor">
+                      Author
+                      <span>*</span>
+                    </label>
+
+                    <input
+                      type="text"
+                      id="blogAuthor"
+                      name="author"
+                      class="form-control-custom"
+                      placeholder="Enter author name"
+                      required
+                    />
+                  </div>
+
                   <!-- SLUG -->
 
                   <div class="form-group">
@@ -216,60 +244,77 @@
                     <small> The slug is used in the blog URL. </small>
                   </div>
 
-                  <!-- CATEGORY -->
+                  <!-- SEO -->
 
-                  <div class="form-group">
-                    <label for="blogCategory">
-                      Category
-
-                      <span>*</span>
-                    </label>
-
-                    <div class="select-wrapper">
-                      <select
-                        id="blogCategory"
-                        name="category"
-                        class="form-control-custom"
-                        required
-                      >
-                        <option value="">Select category</option>
-
-                        <option value="cleaning">Cleaning</option>
-
-                        <option value="home-repair">Home Repair</option>
-
-                        <option value="pest-control">Pest Control</option>
-
-                        <option value="renovation">Renovation</option>
-
-                        <option value="installation">Installation</option>
-
-                        <option value="maintenance">Maintenance</option>
-                      </select>
-
-                      <i class="bi bi-chevron-down"></i>
+                  <div class="form-card-header" style="margin-top: 30px">
+                    <div>
+                      <h3>SEO Information</h3>
+                      <p>
+                        Configure the search engine information for this blog.
+                      </p>
                     </div>
                   </div>
 
-                  <!-- EXCERPT -->
+                  <div class="form-group">
+                    <label for="metaTitle">
+                      Meta Title
+                      <span>*</span>
+                    </label>
+
+                    <input
+                      type="text"
+                      id="metaTitle"
+                      name="metaTitle"
+                      class="form-control-custom"
+                      placeholder="Enter SEO title"
+                      maxlength="60"
+                      required
+                    />
+
+                    <div class="field-footer">
+                      <small>Recommended: 50–60 characters.</small>
+                      <span id="metaTitleCount">0 / 60</span>
+                    </div>
+                  </div>
 
                   <div class="form-group">
-                    <label for="blogExcerpt"> Short Description </label>
+                    <label for="metaDescription">
+                      Meta Description
+                      <span>*</span>
+                    </label>
 
                     <textarea
-                      id="blogExcerpt"
-                      name="excerpt"
-                      class="form-control-custom blog-excerpt"
+                      id="metaDescription"
+                      name="metaDescription"
+                      class="form-control-custom"
                       rows="4"
-                      maxlength="250"
-                      placeholder="Write a short summary of the blog..."
+                      maxlength="160"
+                      placeholder="Enter SEO description"
+                      required
                     ></textarea>
 
                     <div class="field-footer">
-                      <small> This will appear in the blog listing. </small>
-
-                      <span id="excerptCount"> 0 / 250 </span>
+                      <small>Recommended: 150–160 characters.</small>
+                      <span id="metaDescriptionCount">0 / 160</span>
                     </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="metaKeywords">
+                      Meta Keywords
+                      <span>*</span>
+                    </label>
+
+                    <input
+                      type="text"
+                      id="metaKeywords"
+                      name="metaKeywords"
+                      class="form-control-custom"
+                      placeholder="AC service, AC repair, AC maintenance"
+                      required
+                    />
+
+                    <small> Separate keywords using commas. </small>
                   </div>
 
                   <!-- CONTENT -->
@@ -281,14 +326,12 @@
                       <span>*</span>
                     </label>
 
-                    <textarea
-                      id="blogContent"
-                      name="content"
-                      class="form-control-custom blog-content"
-                      rows="12"
-                      placeholder="Write your blog content here..."
-                      required
-                    ></textarea>
+                    <div
+                      id="blogContentEditor"
+                      class="blog-content-editor"
+                    ></div>
+
+                    <textarea id="blogContent" name="content" hidden></textarea>
 
                     <small> Add the complete content of the blog. </small>
                   </div>
@@ -387,7 +430,7 @@
               <!-- ACTIONS -->
 
               <div class="form-actions">
-                <a href="blogs.html" class="cancel-btn"> Cancel </a>
+                <a href="/admin/blogs" class="cancel-btn"> Cancel </a>
 
                 <button type="submit" class="save-service-btn">
                   <i class="bi bi-check-lg"></i>
@@ -402,7 +445,9 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script src="/admin-js/main.js"></script>
+    <script src="/admin-js/blog.js"></script>
 
-    <script src="js/blog-form.js"></script>
   </body>
 </html>
