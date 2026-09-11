@@ -63,9 +63,9 @@
           </a>
 
           <a href="/admin/gallery" class="nav-item">
-              <i class="bi bi-file-earmark-text"></i>
-              <span>Gallery</span>
-            </a>
+            <i class="bi bi-file-earmark-text"></i>
+            <span>Gallery</span>
+          </a>
 
           <a href="/admin/testimonials" class="nav-item">
             <i class="bi bi-chat-square-text"></i>
@@ -75,7 +75,7 @@
 
         <!-- Bottom Section -->
         <div class="sidebar-bottom">
-          <a href="#" class="logout-link">
+          <a href="/admin/logout" class="logout-link">
             <i class="bi bi-box-arrow-right"></i>
             <span>Logout</span>
           </a>
@@ -91,25 +91,22 @@
       <!-- Header -->
       <header class="top-header">
         <div class="header-left">
-          <button type="button" class="sidebar-toggle" id="sidebarToggle">
+          <button class="sidebar-toggle" id="sidebarToggle">
             <i class="bi bi-list"></i>
           </button>
-
-          <div class="header-search">
-            <i class="bi bi-search"></i>
-
-            <input type="text" placeholder="Search..." />
-          </div>
         </div>
 
-        <div class="header-user">
-          <div class="header-user-info">
-            <strong>Metro Cool</strong>
-            <span>Admin</span>
-          </div>
+        <div class="header-right">
+          <!-- User -->
+          <div class="header-user">
+            <div class="header-user-info">
+              <strong>Metro Cool</strong>
+              <span>Admin</span>
+            </div>
 
-          <div class="header-user-avatar">
-            <img src="assets/images/user.jpg" alt="Admin" />
+            <div class="header-user-avatar">
+              <img src="assets/images/user.jpg" alt="Admin" />
+            </div>
           </div>
         </div>
       </header>
@@ -292,7 +289,7 @@
       </div>
     </main>
 
-    <script src="assets/js/style.js"></script>
+    <script src="/admin-js/main.js"></script>
     <script src="/admin-js/gallery.js"></script>
   </body>
 </html>

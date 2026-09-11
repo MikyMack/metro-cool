@@ -82,9 +82,9 @@
           </a>
 
           <a href="/admin/gallery" class="nav-item">
-              <i class="bi bi-file-earmark-text"></i>
-              <span>Gallery</span>
-            </a>
+            <i class="bi bi-file-earmark-text"></i>
+            <span>Gallery</span>
+          </a>
 
           <a href="/admin/testimonials" class="nav-item">
             <i class="bi bi-chat-square-text"></i>
@@ -94,7 +94,7 @@
 
         <!-- Bottom Section -->
         <div class="sidebar-bottom">
-          <a href="#" class="logout-link">
+          <a href="/admin/logout" class="logout-link">
             <i class="bi bi-box-arrow-right"></i>
             <span>Logout</span>
           </a>
@@ -117,14 +117,9 @@
 
       <header class="top-header">
         <div class="header-left">
-          <!-- Search -->
-          <div class="header-search">
-            <input type="text" placeholder="Search anything..." />
-
-            <button type="button">
-              <i class="bi bi-search"></i>
-            </button>
-          </div>
+          <button class="sidebar-toggle" id="sidebarToggle">
+            <i class="bi bi-list"></i>
+          </button>
         </div>
 
         <div class="header-right">
@@ -223,16 +218,13 @@
                   <!-- Category -->
 
                   <div class="form-group">
-                    <label for="serviceCategory">
-                      Category
-                    </label>
+                    <label for="serviceCategory"> Category </label>
 
                     <div class="select-wrapper">
                       <select
                         id="serviceCategory"
                         name="category"
                         class="form-control-custom"
-                        
                       >
                         <option value="">Select category</option>
 

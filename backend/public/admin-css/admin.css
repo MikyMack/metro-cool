@@ -3374,7 +3374,7 @@ button {
   width: 36%;
 }
 
-.service-column,
+
 .testimonials-table td:nth-child(2) {
   width: 20%;
 }
@@ -6504,4 +6504,13 @@ textarea.form-control-custom {
   .login-box h3 {
     font-size: 21px;
   }
+}
+.sidebar-toggle {
+    display: none;
+}
+
+@media (max-width: 991px) {
+    .sidebar-toggle {
+        display: inline-flex;
+    }
 }

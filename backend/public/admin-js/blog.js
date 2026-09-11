@@ -169,21 +169,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function applyFilters() {
     const searchInput = document.getElementById("blogSearch");
-
     const categoryFilter = document.getElementById("blogCategoryFilter");
-
     const statusFilter = document.getElementById("blogStatusFilter");
 
     const searchValue = searchInput?.value?.trim().toLowerCase() || "";
-
     const categoryValue = categoryFilter?.value || "";
-
     const statusValue = statusFilter?.value || "";
 
     filteredBlogs = blogs.filter((blog) => {
-      const title = blog.title?.toLowerCase() || "";
-
-      String(blog.author || "").toLowerCase()
+      const title = String(blog.title || "").toLowerCase();
+      const author = String(blog.author || "").toLowerCase();
 
       const matchesSearch =
         !searchValue ||
@@ -191,14 +186,10 @@ document.addEventListener("DOMContentLoaded", () => {
         author.includes(searchValue);
 
       /*
-       * Your current model DOES NOT contain category.
-       *
-       * Therefore category filtering cannot actually
-       * work with the current model.
-       *
-       * We leave it disabled automatically.
+       * Your Blog model currently does not have
+       * a category field, so category filtering
+       * is not applied.
        */
-
       const matchesCategory = !categoryValue;
 
       const matchesStatus = !statusValue || blog.status === statusValue;
@@ -219,7 +210,6 @@ document.addEventListener("DOMContentLoaded", () => {
     renderPagination();
     updateCount();
   }
-
   /* =========================================================
      RENDER BLOGS
   ========================================================= */
