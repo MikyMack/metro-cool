@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Service Management | Metro Cool Admin</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- quill -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+      rel="stylesheet"
+    />
+    <!-- Your CSS -->
+
+    <link rel="stylesheet" href="/admin-css/admin.css" />
+
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <!-- Logo -->
+        <div class="brand">
+          <div class="brand-icon">
+            <i class="bi bi-flower1"></i>
+          </div>
+
+          <div class="brand-content">
+            <h1>Metro Cool</h1>
+            <span>Service Listing</span>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="sidebar-nav">
+          <a href="/admin/dashboard" class="nav-item">
+            <i class="bi bi-house-fill"></i>
+            <span>Dashboard</span>
+          </a>
+
+          <a href="/admin/services" class="nav-item">
+            <i class="bi bi-grid-3x3-gap"></i>
+            <span>Services</span>
+          </a>
+
+          <a href="/admin/main-banners" class="nav-item">
+            <i class="bi bi-image"></i>
+            <span>Main Banners</span>
+          </a>
+
+          <a href="/admin/mobile-banners" class="nav-item">
+            <i class="bi bi-image"></i>
+            <span>Mobile Banners</span>
+          </a>
+
+          <a href="/admin/blogs" class="nav-item">
+            <i class="bi bi-file-earmark-text"></i>
+            <span>Blogs</span>
+          </a>
+
+          <a href="/admin/gallery" class="nav-item">
+            <i class="bi bi-file-earmark-text"></i>
+            <span>Gallery</span>
+          </a>
+
+          <a href="/admin/testimonials" class="nav-item">
+            <i class="bi bi-chat-square-text"></i>
+            <span>Testimonials</span>
+          </a>
+
+          <a href="/admin/enquiries" class="nav-item">
+              <i class="bi bi-inbox"></i>
+              <span>Enquiries</span>
+            </a>
+        </nav>
+
+        <!-- Bottom Section -->
+        <div class="sidebar-bottom">
+          <a href="/admin/logout" class="logout-link">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Logout</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile overlay -->
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main-content">
+      <!-- =================================================
+             HEADER
+        ================================================== -->
+
+      <header class="top-header">
+        <div class="header-left">
+          <button class="sidebar-toggle" id="sidebarToggle">
+            <i class="bi bi-list"></i>
+          </button>
+        </div>
+
+        <div class="header-right">
+          <!-- User -->
+          <div class="header-user">
+            <div class="header-user-info">
+              <strong>Metro Cool</strong>
+              <span>Admin</span>
+            </div>
+
+            <div class="header-user-avatar">
+              <img src="assets/images/user.jpg" alt="Admin" />
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
+
+      <div class="dashboard-content service-form-page">
+        <!-- =================================================
+                 PAGE HEADER
+            ================================================== -->
+
+        <div class="service-form-header">
+          <div>
+            <h2 id="formPageTitle">Add New Service</h2>
+
+            <div class="breadcrumb-custom">
+              <a href="index.html"> Dashboard </a>
+
+              <i class="bi bi-chevron-right"></i>
+
+              <a href="services.html"> Services </a>
+
+              <i class="bi bi-chevron-right"></i>
+
+              <span id="breadcrumbCurrent"> Add Service </span>
+            </div>
+          </div>
+
+          <!-- Back -->
+
+          <a href="/admin/services" class="back-btn">
+            <i class="bi bi-arrow-left"></i>
+
+            <span> Back to Services </span>
+          </a>
+        </div>
+
+        <!-- =================================================
+                 FORM
+            ================================================== -->
+
+        <form id="serviceForm" class="service-form">
+          <div class="row g-4">
+            <!-- =================================================
+                         LEFT COLUMN
+                    ================================================== -->
+
+            <div class="col-12 col-xl-8">
+              <div class="form-card">
+                <!-- Card Header -->
+
+                <div class="form-card-header">
+                  <div>
+                    <h3>Service Information</h3>
+
+                    <p>Add the basic information about this service.</p>
+                  </div>
+                </div>
+
+                <div class="form-card-body">
+                  <!-- Service Name -->
+
+                  <div class="form-group">
+                    <label for="serviceTitle">
+                      Service Title
+                      <span>*</span>
+                    </label>
+
+                    <input
+                      type="text"
+                      id="serviceTitle"
+                      name="title"
+                      class="form-control-custom"
+                      placeholder="Enter service title"
+                      required
+                    />
+
+                    <small> Use a clear and descriptive service title. </small>
+                  </div>
+
+                  <!-- Category -->
+
+                  <div class="form-group">
+                    <label for="serviceCategory"> Category </label>
+
+                    <div class="select-wrapper">
+                      <select
+                        id="serviceCategory"
+                        name="category"
+                        class="form-control-custom"
+                      >
+                        <option value="">Select category</option>
+
+                        <option value="AC">AC</option>
+
+                        <option value="Refrigerator">Refrigerator</option>
+
+                        <option value="Washing Machine">Washing Machine</option>
+                      </select>
+
+                      <i class="bi bi-chevron-down"></i>
+                    </div>
+                  </div>
+
+                  <!-- Short Description -->
+
+                  <div class="form-group">
+                    <label for="shortDescription"> Short Description </label>
+
+                    <textarea
+                      id="shortDescription"
+                      name="shortDescription"
+                      class="form-control-custom"
+                      rows="3"
+                      maxlength="180"
+                      placeholder="Write a short description of the service..."
+                      required
+                    ></textarea>
+
+                    <div class="field-footer">
+                      <small>
+                        A short summary shown in service listings.
+                      </small>
+
+                      <span id="shortDescriptionCount"> 0 / 180 </span>
+                    </div>
+                  </div>
+
+                  <!-- Full Description -->
+
+                  <div class="form-group">
+                    <label for="serviceContent">
+                      Content
+                      <span>*</span>
+                    </label>
+
+                    <div id="serviceContentEditor"></div>
+
+                    <textarea
+                      id="serviceContent"
+                      name="content"
+                      hidden
+                    ></textarea>
+
+                    <small>
+                      Add detailed information about this service.
+                    </small>
+                  </div>
+                </div>
+              </div>
+
+              <!-- =================================================
+     SEO SETTINGS
+================================================== -->
+
+              <div class="form-card seo-card">
+                <div class="form-card-header">
+                  <div>
+                    <h3>SEO Settings</h3>
+
+                    <p>Add search engine information for this service.</p>
+                  </div>
+                </div>
+
+                <div class="form-card-body">
+                  <!-- Meta Title -->
+
+                  <div class="form-group">
+                    <label for="metaTitle"> Meta Title </label>
+
+                    <input
+                      type="text"
+                      id="metaTitle"
+                      name="metaTitle"
+                      class="form-control-custom"
+                      maxlength="60"
+                      placeholder="Enter SEO meta title"
+                    />
+
+                    <div class="field-footer">
+                      <small> Recommended length: 50–60 characters. </small>
+
+                      <span id="metaTitleCount">0 / 60</span>
+                    </div>
+                  </div>
+
+                  <!-- Meta Description -->
+
+                  <div class="form-group">
+                    <label for="metaDescription"> Meta Description </label>
+
+                    <textarea
+                      id="metaDescription"
+                      name="metaDescription"
+                      class="form-control-custom"
+                      rows="4"
+                      maxlength="160"
+                      placeholder="Write a short description for search engines..."
+                    ></textarea>
+
+                    <div class="field-footer">
+                      <small> Recommended length: 140–160 characters. </small>
+
+                      <span id="metaDescriptionCount">0 / 160</span>
+                    </div>
+                  </div>
+
+                  <!-- Tags -->
+
+                  <div class="form-group">
+                    <label for="serviceTagInput"> Tags </label>
+
+                    <div class="tag-input-wrapper">
+                      <input
+                        type="text"
+                        id="serviceTagInput"
+                        class="form-control-custom"
+                        placeholder="Type a tag and press Enter"
+                      />
+
+                      <div
+                        id="serviceTagsContainer"
+                        class="service-tags-container"
+                      ></div>
+                    </div>
+
+                    <small>
+                      Add relevant keywords such as AC Service, AC Repair, AC
+                      Maintenance.
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <!-- =================================================
+     FAQ
+================================================== -->
+
+              <div class="form-card faq-card">
+                <div class="form-card-header">
+                  <div>
+                    <h3>Frequently Asked Questions</h3>
+
+                    <p>Add common questions and answers about this service.</p>
+                  </div>
+                </div>
+
+                <div class="form-card-body">
+                  <div id="faqContainer"></div>
+
+                  <!-- Add FAQ -->
+
+                  <button type="button" id="addFaqBtn" class="add-faq-btn">
+                    <i class="bi bi-plus-lg"></i>
+
+                    <span>Add FAQ</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- =================================================
+                         RIGHT COLUMN
+                    ================================================== -->
+
+            <div class="col-12 col-xl-4">
+              <!-- =================================================
+                             SERVICE IMAGE
+                        ================================================== -->
+
+              <div class="form-card image-card">
+                <div class="form-card-header">
+                  <div>
+                    <h3>Service Images</h3>
+
+                    <p>Upload images for this service.</p>
+                  </div>
+                </div>
+
+                <div class="form-card-body">
+                  <div class="service-image-preview" id="serviceImagePreview">
+                    <div class="image-placeholder">
+                      <i class="bi bi-images"></i>
+
+                      <strong>No images selected</strong>
+
+                      <span>Upload up to 10 images</span>
+                    </div>
+                  </div>
+
+                  <label for="serviceImage" class="image-upload-btn">
+                    <i class="bi bi-cloud-arrow-up"></i>
+
+                    <span>Choose Images</span>
+                  </label>
+
+                  <input
+                    type="file"
+                    id="serviceImage"
+                    name="images"
+                    accept="image/jpeg,image/png,image/webp"
+                    multiple
+                    hidden
+                  />
+
+                  <div class="image-help">
+                    Recommended:
+                    <strong>1200 × 800px</strong>
+
+                    <br />
+
+                    Maximum:
+                    <strong>10 images, 2MB each</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- =================================================
+                             PUBLISHING
+                        ================================================== -->
+
+              <div class="form-card publishing-card">
+                <div class="form-card-header">
+                  <div>
+                    <h3>Publishing</h3>
+
+                    <p>Control the visibility of this service.</p>
+                  </div>
+                </div>
+
+                <div class="form-card-body">
+                  <!-- Status -->
+
+                  <div class="form-group">
+                    <label for="serviceStatus"> Status </label>
+
+                    <div class="status-options">
+                      <label class="status-option">
+                        <input
+                          type="radio"
+                          name="status"
+                          value="published"
+                          checked
+                        />
+
+                        <span class="status-radio published-radio"></span>
+
+                        <div>
+                          <strong> Published </strong>
+
+                          <small> Visible to users </small>
+                        </div>
+                      </label>
+
+                      <label class="status-option">
+                        <input type="radio" name="status" value="draft" />
+
+                        <span class="status-radio draft-radio"></span>
+
+                        <div>
+                          <strong> Draft </strong>
+
+                          <small> Hidden from users </small>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- =================================================
+                             FORM ACTIONS
+                        ================================================== -->
+
+              <div class="form-actions">
+                <a href="/admin/services" class="cancel-btn"> Cancel </a>
+
+                <button type="submit" class="save-service-btn">
+                  <i class="bi bi-check-lg"></i>
+
+                  <span id="saveButtonText"> Save Service </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- Bootstrap -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+    <script src="/admin-js/main.js"></script>
+    <script src="/admin-js/service-form.js"></script>
+  </body>
+</html>
