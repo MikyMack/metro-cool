@@ -42,51 +42,90 @@
 	<!-- Header End -->
 
     <!-- Hero Section Start -->
-    <div class="hero hero-slider-layout hero-image-only bg-section dark-section">
-        <div class="hero-desktop-slider">
-            <div class="swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="hero-slide">
-                            <div class="hero-slider-image">
-                                <img src="images/metrocool/banner-1.png" alt="MetroCool air conditioning services">
-                            </div>
-                        </div>
-                        
-                    </div>
-                        <div class="swiper-slide">
-                        <div class="hero-slide">
-                            <div class="hero-slider-image">
-                                <img src="images/metrocool/banner-2.png" alt="MetroCool air conditioning services">
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="hero hero-slider-layout hero-image-only bg-section dark-section">
 
-        <div class="hero-mobile-slider">
-            <div class="swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="hero-slide">
-                            <div class="hero-slider-image">
-                                <img src="images/metrocool/mob-banenr-1.png" alt="MetroCool mobile services">
+    <!-- ================= DESKTOP BANNERS ================= -->
+    <div class="hero-desktop-slider">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+
+                <% if (desktopBanners && desktopBanners.length > 0) { %>
+
+                    <% desktopBanners.forEach((banner) => { %>
+
+                        <div class="swiper-slide">
+                            <div class="hero-slide">
+
+                                <% if (banner.link) { %>
+                                    <a href="<%= banner.link %>" class="hero-slider-image">
+                                <% } else { %>
+                                    <div class="hero-slider-image">
+                                <% } %>
+
+                                    <img
+                                        src="<%= banner.image %>"
+                                        alt="<%= banner.title || 'MetroCool air conditioning services' %>"
+                                    >
+
+                                <% if (banner.link) { %>
+                                    </a>
+                                <% } else { %>
+                                    </div>
+                                <% } %>
+
                             </div>
                         </div>
-                    </div>
-                      <div class="swiper-slide">
-                        <div class="hero-slide">
-                            <div class="hero-slider-image">
-                                <img src="images/metrocool/mob-banner-2.png" alt="MetroCool mobile services">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                    <% }) %>
+
+                <% } %>
+
             </div>
         </div>
     </div>
+
+
+    <!-- ================= MOBILE BANNERS ================= -->
+    <div class="hero-mobile-slider">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+
+                <% if (mobileBanners && mobileBanners.length > 0) { %>
+
+                    <% mobileBanners.forEach((banner) => { %>
+
+                        <div class="swiper-slide">
+                            <div class="hero-slide">
+
+                                <% if (banner.link) { %>
+                                    <a href="<%= banner.link %>" class="hero-slider-image">
+                                <% } else { %>
+                                    <div class="hero-slider-image">
+                                <% } %>
+
+                                    <img
+                                        src="<%= banner.image %>"
+                                        alt="<%= banner.title || 'MetroCool air conditioning services' %>"
+                                    >
+
+                                <% if (banner.link) { %>
+                                    </a>
+                                <% } else { %>
+                                    </div>
+                                <% } %>
+
+                            </div>
+                        </div>
+
+                    <% }) %>
+
+                <% } %>
+
+            </div>
+        </div>
+    </div>
+
+</div>
     <!-- Hero Section End -->
 
     <!-- About Us Section Start -->
@@ -1419,133 +1458,83 @@ Quick booking, convenient scheduling, and hassle-free service.
                     <div class="swiper">
                         <div class="swiper-wrapper" data-cursor-text="Drag">
 
-                            <!-- Testimonial Slide Start -->
-                            <div class="swiper-slide">
-                                <div class="testimonial-item">
+                            <% if (testimonials && testimonials.length > 0) { %>
 
-                                    <div class="testimonial-rating">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
+                                <% testimonials.forEach((testimonial) => { %>
 
-                                    <div class="testimonial-content">
-                                        <p>
-                                            The AC service was handled professionally and
-                                            everything was explained clearly. The technician
-                                            was careful, efficient and completed the work neatly.
-                                        </p>
-                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="testimonial-item">
 
-                                    <div class="testimonial-body">
-                                        <div class="testimonial-author">
-                                            <div class="author-image">
-                                                <figure class="image-anime">
-                                                    <img src="images/metrocool/dummy.jpg" alt="MetroCool customer">
-                                                </figure>
+                                            <div class="testimonial-rating">
+                                                <% 
+                                                    const rating = testimonial.rating || 5;
+                                                    for (let i = 1; i <= 5; i++) {
+                                                %>
+                                                    <i class="fa-solid fa-star <%= i <= rating ? '' : 'text-muted' %>"></i>
+                                                <% } %>
                                             </div>
 
-                                            <div class="author-content">
-                                                <h3>Rahul Nair</h3>
-                                            </div>
-                                        </div>
-
-                                        <div class="testimonial-quote">
-                                            <img src="images/metrocool/google-icon.webp" alt="googleicon">
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <!-- Testimonial Slide End -->
-
-
-                            <!-- Testimonial Slide Start -->
-                            <div class="swiper-slide">
-                                <div class="testimonial-item">
-
-                                    <div class="testimonial-rating">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-
-                                    <div class="testimonial-content">
-                                        <p>
-                                            I booked MetroCool for my washing machine service.
-                                            The technician inspected the appliance properly and
-                                            fixed the issue without making the process complicated.
-                                        </p>
-                                    </div>
-
-                                    <div class="testimonial-body">
-                                        <div class="testimonial-author">
-                                            <div class="author-image">
-                                                <figure class="image-anime">
-                                                    <img src="images/metrocool/dummy.jpg" alt="MetroCool customer">
-                                                </figure>
+                                            <div class="testimonial-content">
+                                                <p>
+                                                    <%= testimonial.content %>
+                                                </p>
                                             </div>
 
-                                            <div class="author-content">
-                                                <h3>Anjali Menon</h3>
-                                            </div>
-                                        </div>
+                                            <div class="testimonial-body">
 
-                                        <div class="testimonial-quote">
-                                            <img src="images/metrocool/google-icon.webp" alt="googleicon">
+                                                <div class="testimonial-author">
+
+                                                    <div class="author-image">
+                                                        <figure class="image-anime">
+
+                                                            <% if (testimonial.imageUrl) { %>
+
+                                                                <img
+                                                                    src="<%= testimonial.imageUrl %>"
+                                                                    alt="<%= testimonial.name %>"
+                                                                >
+
+                                                            <% } else { %>
+
+                                                                <img
+                                                                    src="images/metrocool/dummy.jpg"
+                                                                    alt="<%= testimonial.name %>"
+                                                                >
+
+                                                            <% } %>
+
+                                                        </figure>
+                                                    </div>
+
+                                                    <div class="author-content">
+                                                        <h3>
+                                                            <%= testimonial.name %>
+                                                        </h3>
+
+                                                        <% if (testimonial.designation) { %>
+                                                            <p>
+                                                                <%= testimonial.designation %>
+                                                            </p>
+                                                        <% } %>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="testimonial-quote">
+                                                    <img
+                                                        src="images/metrocool/google-icon.webp"
+                                                        alt="Google"
+                                                    >
+                                                </div>
+
+                                            </div>
+
                                         </div>
                                     </div>
 
-                                </div>
-                            </div>
-                            <!-- Testimonial Slide End -->
+                                <% }) %>
 
-
-                            <!-- Testimonial Slide Start -->
-                            <div class="swiper-slide">
-                                <div class="testimonial-item">
-
-                                    <div class="testimonial-rating">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                    </div>
-
-                                    <div class="testimonial-content">
-                                        <p>
-                                            Good service from start to finish. The technician
-                                            arrived prepared, identified the problem quickly and
-                                            completed the repair with proper care.
-                                        </p>
-                                    </div>
-
-                                    <div class="testimonial-body">
-                                        <div class="testimonial-author">
-                                            <div class="author-image">
-                                                <figure class="image-anime">
-                                                    <img src="images/metrocool/dummy.jpg" alt="MetroCool customer">
-                                                </figure>
-                                            </div>
-
-                                            <div class="author-content">
-                                                <h3>Arjun Kumar</h3>
-                                            </div>
-                                        </div>
-
-                                        <div class="testimonial-quote">
-                                            <img src="images/metrocool/google-icon.webp" alt="googleicon">
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <!-- Testimonial Slide End -->
+                            <% } %>
 
                         </div>
 
@@ -1594,222 +1583,172 @@ Quick booking, convenient scheduling, and hassle-free service.
     <!-- Our Testimonial Section End -->
 
     <!-- Our Gallery Section Start -->
+<% if (gallery && gallery.length > 0) { %>
+
     <div class="our-gallery bg-section">
         <div class="container">
+
             <div class="row section-row align-items-center">
-             <div class="col-lg-12">
-    <div class="section-title section-title-center">
-        <h3 class="wow fadeInUp">Our Gallery</h3>
-        <h2 class="text-anime-style-3" data-cursor="-opaque">
-            Work That Speaks for Itself
-        </h2>
-    </div>
-</div>
+                <div class="col-lg-12">
+                    <div class="section-title section-title-center">
+                        <h3 class="wow fadeInUp">Our Gallery</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">
+                            Work That Speaks for Itself
+                        </h2>
+                    </div>
+                </div>
             </div>
 
             <div class="gallery-slider gallery-items swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="photo-gallery">
-                            <a href="images/metrocool/abt-1.jpg" data-cursor-text="View">
-                                <figure class="image-anime"><img src="images/metrocool/abt-1.jpg" alt="MetroCool service"></figure>
-                            </a>
+
+                    <% gallery.forEach((item) => { %>
+
+                        <div class="swiper-slide">
+                            <div class="photo-gallery">
+
+                                <a
+                                    href="<%= item.image %>"
+                                    data-cursor-text="View"
+                                >
+                                    <figure class="image-anime">
+                                        <img
+                                            src="<%= item.image %>"
+                                            alt="<%= item.alt_text || item.title || 'MetroCool Gallery' %>"
+                                        >
+                                    </figure>
+                                </a>
+
+                            </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="photo-gallery">
-                            <a href="images/metrocool/abt-2.jpg" data-cursor-text="View">
-                                <figure class="image-anime"><img src="images/metrocool/abt-2.jpg" alt="MetroCool appliance care"></figure>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="photo-gallery">
-                            <a href="images/metrocool/abt-4.jpg" data-cursor-text="View">
-                                <figure class="image-anime"><img src="images/metrocool/abt-4.jpg" alt="MetroCool AC service"></figure>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="photo-gallery">
-                            <a href="images/metrocool/abt-5.jpg" data-cursor-text="View">
-                                <figure class="image-anime"><img src="images/metrocool/abt-5.jpg" alt="MetroCool maintenance service"></figure>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="photo-gallery">
-                            <a href="images/metrocool/abt-7.jpg" data-cursor-text="View">
-                                <figure class="image-anime"><img src="images/metrocool/abt-7.jpg" alt="MetroCool appliance service"></figure>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="photo-gallery">
-                            <a href="images/metrocool/abt-8.jpg" data-cursor-text="View">
-                                <figure class="image-anime"><img src="images/metrocool/abt-8.jpg" alt="MetroCool AC maintenance"></figure>
-                            </a>
-                        </div>
-                    </div>
+
+                    <% }) %>
+
                 </div>
+
                 <div class="gallery-pagination"></div>
             </div>
+
         </div>
     </div>
+
+<% } %>
     <!-- Our Gallery Section End -->
 
 
 
     <!-- Our Blog Section Start -->
+<% if (blogs && blogs.length > 0) { %>
+
 <div class="our-blog">
     <div class="container">
 
         <div class="row section-row align-items-center">
             <div class="col-lg-12">
+
                 <!-- Section Title Start -->
                 <div class="section-title section-title-center">
                     <h3 class="wow fadeInUp">Latest Insights</h3>
+
                     <h2 class="text-anime-style-3" data-cursor="-opaque">
-                           Expert Tips & Appliance Insights
+                        Expert Tips & Appliance Insights
                     </h2>
                 </div>
                 <!-- Section Title End -->
+
             </div>
         </div>
+
 
         <div class="blog-slider swiper">
+
             <div class="swiper-wrapper">
 
-            <!-- Blog Post 1 Start -->
-            <div class="swiper-slide">
-                <div class="post-item wow fadeInUp">
+                <% blogs.forEach((blog, index) => { %>
 
-                    <!-- Post Featured Image Start -->
-                    <div class="post-featured-image">
-                        <a href="blog-single.html" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="images/post-1.jpg" alt="AC maintenance tips">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Post Featured Image End -->
+                    <!-- Blog Post Start -->
+                    <div class="swiper-slide">
 
-                    <!-- Post Item Body Start -->
-                    <div class="post-item-body">
+                        <div
+                            class="post-item wow fadeInUp"
+                            <% if (index > 0) { %>
+                                data-wow-delay="<%= (index * 0.2).toFixed(1) %>s"
+                            <% } %>
+                        >
 
-                        <div class="post-item-content">
-                            <h2>
-                                <a href="blog-single.html">
-                                    Simple Tips to Keep Your AC Running Efficiently
+                            <!-- Post Featured Image Start -->
+                            <div class="post-featured-image">
+
+                                <a
+                                    href="/blog/<%= blog.slug %>"
+                                    data-cursor-text="View"
+                                >
+
+                                    <figure class="image-anime">
+
+                                        <img
+                                            src="<%= blog.imageUrl %>"
+                                            alt="<%= blog.title %>"
+                                        >
+
+                                    </figure>
+
                                 </a>
-                            </h2>
 
-                            <p>
-                                Learn simple maintenance tips that can help improve cooling
-                                performance and keep your AC running smoothly.
-                            </p>
-                        </div>
-
-                        <div class="post-item-btn">
-                            <a href="blog-single.html">Read More</a>
-                        </div>
-
-                    </div>
-                    <!-- Post Item Body End -->
-
-                </div>
-            </div>
-            <!-- Blog Post 1 End -->
+                            </div>
+                            <!-- Post Featured Image End -->
 
 
-            <!-- Blog Post 2 Start -->
-            <div class="swiper-slide">
-                <div class="post-item wow fadeInUp" data-wow-delay="0.2s">
+                            <!-- Post Item Body Start -->
+                            <div class="post-item-body">
 
-                    <!-- Post Featured Image Start -->
-                    <div class="post-featured-image">
-                        <a href="blog-single.html" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="images/post-2.jpg" alt="Washing machine care tips">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Post Featured Image End -->
+                                <div class="post-item-content">
 
-                    <!-- Post Item Body Start -->
-                    <div class="post-item-body">
+                                    <h2>
+                                        <a href="/blog/<%= blog.slug %>">
+                                            <%= blog.title %>
+                                        </a>
+                                    </h2>
 
-                        <div class="post-item-content">
-                            <h2>
-                                <a href="blog-single.html">
-                                    Common Signs Your Washing Machine Needs Service
-                                </a>
-                            </h2>
+                                    <p>
+                                        <%= blog.content
+                                            .replace(/<[^>]*>/g, "")
+                                            .replace(/\s+/g, " ")
+                                            .trim()
+                                            .substring(0, 150) %>...
+                                    </p>
 
-                            <p>
-                                Discover common warning signs that may indicate your washing
-                                machine needs professional attention.
-                            </p>
-                        </div>
+                                </div>
 
-                        <div class="post-item-btn">
-                            <a href="blog-single.html">Read More</a>
+
+                                <div class="post-item-btn">
+
+                                    <a href="/blog/<%= blog.slug %>">
+                                        Read More
+                                    </a>
+
+                                </div>
+
+                            </div>
+                            <!-- Post Item Body End -->
+
                         </div>
 
                     </div>
-                    <!-- Post Item Body End -->
+                    <!-- Blog Post End -->
 
-                </div>
-            </div>
-            <!-- Blog Post 2 End -->
-
-
-            <!-- Blog Post 3 Start -->
-            <div class="swiper-slide">
-                <div class="post-item wow fadeInUp" data-wow-delay="0.4s">
-
-                    <!-- Post Featured Image Start -->
-                    <div class="post-featured-image">
-                        <a href="blog-single.html" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="images/post-3.jpg" alt="AC servicing benefits">
-                            </figure>
-                        </a>
-                    </div>
-                    <!-- Post Featured Image End -->
-
-                    <!-- Post Item Body Start -->
-                    <div class="post-item-body">
-
-                        <div class="post-item-content">
-                            <h2>
-                                <a href="blog-single.html">
-                                    Why Regular AC Servicing Matters
-                                </a>
-                            </h2>
-
-                            <p>
-                                Regular AC care can help maintain airflow, cooling performance
-                                and reliable day-to-day operation.
-                            </p>
-                        </div>
-
-                        <div class="post-item-btn">
-                            <a href="blog-single.html">Read More</a>
-                        </div>
-
-                    </div>
-                    <!-- Post Item Body End -->
-
-                </div>
-            </div>
-            <!-- Blog Post 3 End -->
+                <% }) %>
 
             </div>
+
             <div class="blog-pagination"></div>
+
         </div>
+
     </div>
 </div>
+
+<% } %>
     <!-- Our Blog Section End -->
     
     <!-- Footer Start -->

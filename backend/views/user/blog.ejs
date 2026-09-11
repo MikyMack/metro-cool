@@ -112,248 +112,137 @@
  <div class="page-blog">
     <div class="container">
         <div class="row">
+<% if (blogs && blogs.length > 0) { %>
 
-            <!-- Blog Item 1 Start -->
-            <div class="col-lg-4 col-md-6">
-                <div class="post-item wow fadeInUp">
+  <% blogs.forEach((blog, index) => { %>
 
-                    <div class="post-featured-image">
-                        <a href="blog-single.html" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="images/post-1.jpg" alt="AC maintenance tips">
-                            </figure>
-                        </a>
-                    </div>
+    <!-- Blog Item Start -->
+    <div class="col-lg-4 col-md-6">
 
-                    <div class="post-item-body">
-                        <div class="post-item-content">
-                            <h2>
-                                <a href="blog-single.html">
-                                    How to Keep Your AC Running Smoothly
-                                </a>
-                            </h2>
+      <div
+        class="post-item wow fadeInUp"
+        <% if (index % 3 !== 0) { %>
+          data-wow-delay="<%= (index % 3) * 0.2 %>s"
+        <% } %>
+      >
 
-                            <p>
-                                Simple maintenance practices that help maintain cooling performance and airflow.
-                            </p>
-                        </div>
+        <div class="post-featured-image">
 
-                        <div class="post-item-btn">
-                            <a href="blog-single.html">read more</a>
-                        </div>
-                    </div>
+          <a
+            href="/blog/<%= blog.slug %>"
+            data-cursor-text="View"
+          >
+            <figure class="image-anime">
 
-                </div>
-            </div>
-            <!-- Blog Item 1 End -->
+              <img
+                src="<%= blog.imageUrl %>"
+                alt="<%= blog.title %>"
+              >
+
+            </figure>
+          </a>
+
+        </div>
 
 
-            <!-- Blog Item 2 Start -->
-            <div class="col-lg-4 col-md-6">
-                <div class="post-item wow fadeInUp" data-wow-delay="0.2s">
+        <div class="post-item-body">
 
-                    <div class="post-featured-image">
-                        <a href="blog-single.html" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="images/post-2.jpg" alt="AC repair warning signs">
-                            </figure>
-                        </a>
-                    </div>
+          <div class="post-item-content">
 
-                    <div class="post-item-body">
-                        <div class="post-item-content">
-                            <h2>
-                                <a href="blog-single.html">
-                                    Signs Your AC Needs Attention
-                                </a>
-                            </h2>
+            <h2>
+              <a href="/blog/<%= blog.slug %>">
+                <%= blog.title %>
+              </a>
+            </h2>
 
-                            <p>
-                                Learn the common signs that may indicate your AC needs inspection or repair.
-                            </p>
-                        </div>
+            <p>
+              <%= blog.content
+                .replace(/<[^>]*>/g, "")
+                .replace(/\s+/g, " ")
+                .trim()
+                .substring(0, 150) %>...
+            </p>
 
-                        <div class="post-item-btn">
-                            <a href="blog-single.html">read more</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- Blog Item 2 End -->
+          </div>
 
 
-            <!-- Blog Item 3 Start -->
-            <div class="col-lg-4 col-md-6">
-                <div class="post-item wow fadeInUp" data-wow-delay="0.4s">
+          <div class="post-item-btn">
 
-                    <div class="post-featured-image">
-                        <a href="blog-single.html" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="images/post-3.jpg" alt="Washing machine maintenance">
-                            </figure>
-                        </a>
-                    </div>
+            <a href="/blog/<%= blog.slug %>">
+              read more
+            </a>
 
-                    <div class="post-item-body">
-                        <div class="post-item-content">
-                            <h2>
-                                <a href="blog-single.html">
-                                    Simple Washing Machine Care Tips
-                                </a>
-                            </h2>
+          </div>
 
-                            <p>
-                                Practical ways to care for your washing machine and maintain its performance.
-                            </p>
-                        </div>
+        </div>
 
-                        <div class="post-item-btn">
-                            <a href="blog-single.html">read more</a>
-                        </div>
-                    </div>
+      </div>
 
-                </div>
-            </div>
-            <!-- Blog Item 3 End -->
+    </div>
+    <!-- Blog Item End -->
+
+  <% }) %>
+
+<% } %>
 
 
-            <!-- Blog Item 4 Start -->
-            <div class="col-lg-4 col-md-6">
-                <div class="post-item wow fadeInUp">
+<% if (totalPages > 1) { %>
 
-                    <div class="post-featured-image">
-                        <a href="blog-single.html" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="images/post-4.jpg" alt="AC cooling performance">
-                            </figure>
-                        </a>
-                    </div>
+  <!-- Pagination Start -->
+  <div class="col-lg-12">
 
-                    <div class="post-item-body">
-                        <div class="post-item-content">
-                            <h2>
-                                <a href="blog-single.html">
-                                    Why Your AC May Not Cool Properly
-                                </a>
-                            </h2>
+    <div
+      class="page-pagination wow fadeInUp"
+      data-wow-delay="1.2s"
+    >
 
-                            <p>
-                                Explore common reasons behind reduced cooling and when professional service may help.
-                            </p>
-                        </div>
+      <ul class="pagination">
 
-                        <div class="post-item-btn">
-                            <a href="blog-single.html">read more</a>
-                        </div>
-                    </div>
+        <!-- Previous -->
+        <% if (currentPage > 1) { %>
 
-                </div>
-            </div>
-            <!-- Blog Item 4 End -->
+          <li>
+            <a href="/blog?page=<%= currentPage - 1 %>">
+              <i class="fa-solid fa-angle-left"></i>
+            </a>
+          </li>
+
+        <% } %>
 
 
-            <!-- Blog Item 5 Start -->
-            <div class="col-lg-4 col-md-6">
-                <div class="post-item wow fadeInUp" data-wow-delay="0.2s">
+        <!-- Page Numbers -->
+        <% for (let i = 1; i <= totalPages; i++) { %>
 
-                    <div class="post-featured-image">
-                        <a href="blog-single.html" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="images/post-5.jpg" alt="Washing machine problems">
-                            </figure>
-                        </a>
-                    </div>
+          <li class="<%= currentPage === i ? 'active' : '' %>">
 
-                    <div class="post-item-body">
-                        <div class="post-item-content">
-                            <h2>
-                                <a href="blog-single.html">
-                                    Common Washing Machine Problems
-                                </a>
-                            </h2>
+            <a href="/blog?page=<%= i %>">
+              <%= i %>
+            </a>
 
-                            <p>
-                                Understand some common appliance issues and what they could mean for your machine.
-                            </p>
-                        </div>
+          </li>
 
-                        <div class="post-item-btn">
-                            <a href="blog-single.html">read more</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- Blog Item 5 End -->
+        <% } %>
 
 
-            <!-- Blog Item 6 Start -->
-            <div class="col-lg-4 col-md-6">
-                <div class="post-item wow fadeInUp" data-wow-delay="0.4s">
+        <!-- Next -->
+        <% if (currentPage < totalPages) { %>
 
-                    <div class="post-featured-image">
-                        <a href="blog-single.html" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="images/post-6.jpg" alt="Home appliance maintenance">
-                            </figure>
-                        </a>
-                    </div>
+          <li>
+            <a href="/blog?page=<%= currentPage + 1 %>">
+              <i class="fa-solid fa-angle-right"></i>
+            </a>
+          </li>
 
-                    <div class="post-item-body">
-                        <div class="post-item-content">
-                            <h2>
-                                <a href="blog-single.html">
-                                    When Should You Service Your Appliances?
-                                </a>
-                            </h2>
+        <% } %>
 
-                            <p>
-                                Regular appliance care can help maintain performance and identify issues early.
-                            </p>
-                        </div>
+      </ul>
 
-                        <div class="post-item-btn">
-                            <a href="blog-single.html">read more</a>
-                        </div>
-                    </div>
+    </div>
 
-                </div>
-            </div>
-            <!-- Blog Item 6 End -->
+  </div>
+  <!-- Pagination End -->
 
-
-            <!-- Pagination Start -->
-            <div class="col-lg-12">
-                <div class="page-pagination wow fadeInUp" data-wow-delay="1.2s">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#">
-                                <i class="fa-solid fa-angle-left"></i>
-                            </a>
-                        </li>
-
-                        <li class="active">
-                            <a href="#">1</a>
-                        </li>
-
-                        <li>
-                            <a href="#">2</a>
-                        </li>
-
-                        <li>
-                            <a href="#">3</a>
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                <i class="fa-solid fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Pagination End -->
+<% } %>
 
         </div>
     </div>
