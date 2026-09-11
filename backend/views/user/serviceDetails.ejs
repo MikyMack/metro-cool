@@ -38,6 +38,11 @@
     <link rel="stylesheet" href="/css/mousecursor.css" />
     <!-- Main Custom Css -->
     <link href="/css/custom.css" rel="stylesheet" media="screen" />
+
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+/>
   </head>
   <body>
     
@@ -251,6 +256,27 @@
           </div>
           <!-- Service Entry End -->
 
+          <!-- Service Enquiry CTA Start -->
+<div class="service-enquiry-cta">
+  <div class="service-enquiry-cta-content">
+    <h3>Need this service?</h3>
+    <p>
+      Get in touch with our team for professional and reliable service.
+    </p>
+  </div>
+
+  <button
+    type="button"
+    class="service-enquiry-btn"
+    data-bs-toggle="modal"
+    data-bs-target="#serviceEnquiryModal"
+  >
+    Request This Service
+    <i class="bi bi-arrow-right"></i>
+  </button>
+</div>
+<!-- Service Enquiry CTA End -->
+
 
           <!-- Page Single FAQs Start -->
           <% if (service.faq && service.faq.length > 0) { %>
@@ -347,6 +373,171 @@
 </div>
     <!-- Page Service Single End -->
 
+<div
+  class="modal fade service-enquiry-modal"
+  id="serviceEnquiryModal"
+  tabindex="-1"
+  aria-labelledby="serviceEnquiryModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Header -->
+      <div class="modal-header">
+        <div>
+          <span class="service-enquiry-eyebrow">
+            Service Request
+          </span>
+
+          <h2 class="modal-title" id="serviceEnquiryModalLabel">
+            Request This Service
+          </h2>
+        </div>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+
+        <form id="serviceEnquiryForm">
+
+          <input
+            type="hidden"
+            id="enquiryService"
+            value="<%= service._id %>"
+          />
+
+          <input
+            type="hidden"
+            id="enquirySource"
+            value="service"
+          />
+
+          <div class="enquiry-modal-grid">
+
+            <!-- LEFT -->
+            <div class="enquiry-service-info">
+
+              <span class="enquiry-info-label">
+                Service
+              </span>
+
+              <h3>
+                <%= service.title %>
+              </h3>
+
+              <p>
+                Need professional service? Fill in your details
+                and our team will get in touch with you shortly.
+              </p>
+
+              <div class="enquiry-info-note">
+                <i class="bi bi-check-circle"></i>
+                <span>
+                  Our team will contact you to understand your
+                  requirements and schedule the service.
+                </span>
+              </div>
+
+            </div>
+
+            <!-- RIGHT -->
+            <div class="enquiry-contact-fields">
+
+              <div class="enquiry-form-group">
+                <label for="enquiryName">
+                  Name <span>*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="enquiryName"
+                  name="name"
+                  placeholder="Enter your name"
+                  maxlength="100"
+                  required
+                />
+              </div>
+
+              <div class="enquiry-form-group">
+                <label for="enquiryPhone">
+                  Phone Number <span>*</span>
+                </label>
+
+                <input
+                  type="tel"
+                  id="enquiryPhone"
+                  name="phone"
+                  placeholder="Enter your phone number"
+                  maxlength="20"
+                  required
+                />
+              </div>
+
+              <div class="enquiry-form-group">
+                <label for="enquiryEmail">
+                  Email <small>(Optional)</small>
+                </label>
+
+                <input
+                  type="email"
+                  id="enquiryEmail"
+                  name="email"
+                  placeholder="Enter your email address"
+                />
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- FULL WIDTH -->
+          <div class="enquiry-message-section">
+
+            <div class="enquiry-form-group">
+              <label for="enquiryMessage">
+                Message <small>(Optional)</small>
+              </label>
+
+              <textarea
+                id="enquiryMessage"
+                name="message"
+                rows="4"
+                maxlength="500"
+                placeholder="Tell us how we can help..."
+              ></textarea>
+            </div>
+
+          </div>
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            class="enquiry-submit-btn"
+            id="serviceEnquirySubmit"
+          >
+            <span id="serviceEnquirySubmitText">
+              Submit Request
+            </span>
+
+            <i class="bi bi-arrow-right"></i>
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
     <!-- Footer Start -->
     <%- include('../partial/footer') %>
     <!-- Footer End -->
@@ -392,6 +583,10 @@
     <script src="/js/wow.min.js"></script>
     <!-- Main Custom js file -->
     <script src="/js/function.js"></script>
+    <script
+  src="https://cdn.jsdelivr.net/npm/toastify-js"
+></script>
+<script src="/js/enquiry.js"></script>
     <script src="../../demo.awaikenthemes.com/assets/js/theme-panel-dynamic.js"></script>
   </body>
 </html>

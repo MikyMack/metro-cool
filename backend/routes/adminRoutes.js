@@ -89,6 +89,10 @@ router.get("/gallery-form", isAdmin, (req, res) => {
   res.render("admin/gallery-form");
 });
 
+router.get("/enquiries", isAdmin, (req, res) => {
+  res.render("admin/enquiry");
+});
+
 
 router.get('/logout', (req, res) => {
     req.session.destroy((err) => {

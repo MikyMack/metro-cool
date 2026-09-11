@@ -59,6 +59,14 @@ const {
   updateGallerySortOrder,
 } = require("../controllers/galleryController");
 
+const {
+  createEnquiry,
+  getAllEnquiries,
+  getEnquiryById,
+  updateEnquiryStatus,
+  deleteEnquiry,
+} = require("../controllers/enquiryController");
+
 // Service Routes
 router.post("/services", upload.array("images", 10), createService);
 router.get("/services", getAllServices);
@@ -110,5 +118,12 @@ router.put("/gallery/:id", upload.single("image"), updateGallery);
 router.patch("/gallery/:id/toggle-status", toggleGalleryStatus);
 router.patch("/gallery/:id/sort-order", updateGallerySortOrder);
 router.delete("/gallery/:id", deleteGallery);
+
+// ENQUIRY ROUTES
+router.post("/enquiries", createEnquiry);
+router.get("/enquiries", getAllEnquiries);
+router.get("/enquiries/:id", getEnquiryById);
+router.patch("/enquiries/:id/status", updateEnquiryStatus);
+router.delete("/enquiries/:id", deleteEnquiry);
 
 module.exports = router;
