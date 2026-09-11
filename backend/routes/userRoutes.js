@@ -111,6 +111,11 @@ router.get("/about", async (req, res, next) => {
 // Services Page
 router.get("/services", async (req, res, next) => {
   try {
+    const testimonials = await Testimonial.find({
+      isActive: true,
+    })
+      .sort({ createdAt: -1 })
+      .lean();
     const limit = 8;
 
     let page = parseInt(req.query.page, 10) || 1;
@@ -140,6 +145,7 @@ router.get("/services", async (req, res, next) => {
       currentPage: page,
       totalPages,
       totalServices,
+      testimonials,
     });
   } catch (error) {
     next(error);
