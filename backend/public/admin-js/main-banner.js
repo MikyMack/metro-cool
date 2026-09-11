@@ -41,7 +41,7 @@ function initBannerList() {
 
   let currentPage = 1;
 
-  const itemsPerPage = 8;
+  const itemsPerPage = 9;
 
   // ==========================================================
   // LOAD BANNERS

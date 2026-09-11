@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentPage = 1;
 
-  const itemsPerPage = 8;
+  const itemsPerPage = 10;
 
   // ========================================
   // LOAD SERVICES

@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const BLOG_LIST_PAGE = "/admin/blogs";
   const BLOG_FORM_PAGE = "/admin/blog-form";
 
-  const ITEMS_PER_PAGE = 6;
+  const ITEMS_PER_PAGE = 10;
   const MAX_FILE_SIZE = 2 * 1024 * 1024;
 
   const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];

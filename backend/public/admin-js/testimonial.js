@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const LIST_PAGE_URL = "/admin/testimonials";
   const FORM_PAGE_URL = "/admin/testimonial-form";
 
-  const ITEMS_PER_PAGE = 5;
+  const ITEMS_PER_PAGE = 8;
   const MAX_FILE_SIZE = 2 * 1024 * 1024;
 
   const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];

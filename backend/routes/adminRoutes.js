@@ -89,4 +89,14 @@ router.get("/gallery-form", isAdmin, (req, res) => {
   res.render("admin/gallery-form");
 });
 
+
+router.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.redirect('/admin/dashboard');
+        }
+        res.clearCookie('connect.sid');
+        res.redirect('/admin/login');
+    });
+});
 module.exports = router;

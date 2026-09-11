@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const LIST_PAGE_URL = "/admin/mobile-banners";
   const FORM_PAGE_URL = "/admin/mobile-banner-form";
 
-  const ITEMS_PER_PAGE = 6;
+  const ITEMS_PER_PAGE = 9;
   const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
   const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
