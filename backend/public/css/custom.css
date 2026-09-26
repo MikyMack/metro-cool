@@ -45,11 +45,12 @@
 /*** 	 01. Global Variables	  ***/
 /************************************/
 
+/* 025bde */
 :root {
   --primary-color: #042245;
   --secondary-color: #f3f3f5;
   --text-color: #545454;
-  --accent-color: #025bde;
+  --accent-color: #F01124;
   --white-color: #ffffff;
   --divider-color: #0422451a;
   --dark-divider-color: #ffffff1a;
@@ -539,6 +540,8 @@ header.main-header .header-sticky.active {
 .navbar-brand {
   padding: 0;
   margin: 0;
+  width: 100%;
+  max-width: 130px;
 }
 
 .navbar-brand img {
