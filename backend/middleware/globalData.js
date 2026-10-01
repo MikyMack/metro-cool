@@ -1,6 +1,11 @@
 const Service = require("../models/Service");
 
 const loadGlobalData = async (req, res, next) => {
+  // Shared partials read these on every page, including error pages rendered for /admin and /api
+  res.locals.headerServices = [];
+  res.locals.footerServices = [];
+  res.locals.services = [];
+
   try {
     // Skip loading public website data for API and admin requests
     if (
@@ -25,11 +30,6 @@ const loadGlobalData = async (req, res, next) => {
     next();
   } catch (err) {
     console.error("GLOBAL DATA ERROR:", err);
-
-    // Prevent the website from breaking if service loading fails
-    res.locals.headerServices = [];
-    res.locals.footerServices = [];
-
     next();
   }
 };
