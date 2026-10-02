@@ -1,5 +1,8 @@
 const multer = require("multer");
+const fs = require("fs");
 const path = require("path");
+
+const uploadDirectory = path.join(__dirname, "..", "uploads");
 
 function slugify(str) {
   return str
@@ -15,7 +18,9 @@ function slugify(str) {
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "uploads");
+    fs.mkdir(uploadDirectory, { recursive: true }, (error) => {
+      cb(error, uploadDirectory);
+    });
   },
 
   filename: function (req, file, cb) {
